@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>搭建我的第一个hexo博客 | Hexo</title>
+  <title>Docker学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="官方文档：https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;  准备工作 安装git环境 安装node环境  快速开始 安装hexo 1234# 安装npm install -g hexo-cli# 验证hexo -v 新建一个目录，用于存放工程文件。开始初始化 123456# 我在当前用户目录下新建了一个blog目录，其实可以随意cd ~mkdir blogcd blog# 初始化hexohexo i">
+  <meta name="description" content="镜像命令1234567891011121314# 列出本地的所有镜像docker images# 搜索dockerHub上的镜像docker search 镜像名# 从远程仓库中拉取镜像docker pull 镜像名# 按镜像名或哈希值删除一个或多个镜像，加-f强制删除docker rmi 镜像名或id# 删除本地的所有镜像docker rmi $(docker images -qa)  容器命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建我的第一个hexo博客">
-<meta property="og:url" content="http://example.com/2022/03/19/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="Docker学习">
+<meta property="og:url" content="http://example.com/2021/11/04/docker%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="官方文档：https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;  准备工作 安装git环境 安装node环境  快速开始 安装hexo 1234# 安装npm install -g hexo-cli# 验证hexo -v 新建一个目录，用于存放工程文件。开始初始化 123456# 我在当前用户目录下新建了一个blog目录，其实可以随意cd ~mkdir blogcd blog# 初始化hexohexo i">
+<meta property="og:description" content="镜像命令1234567891011121314# 列出本地的所有镜像docker images# 搜索dockerHub上的镜像docker search 镜像名# 从远程仓库中拉取镜像docker pull 镜像名# 按镜像名或哈希值删除一个或多个镜像，加-f强制删除docker rmi 镜像名或id# 删除本地的所有镜像docker rmi $(docker images -qa)  容器命令">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-19T14:09:31.000Z">
-<meta property="article:modified_time" content="2022-06-07T08:50:14.966Z">
+<meta property="article:published_time" content="2021-11-04T15:49:00.000Z">
+<meta property="article:modified_time" content="2022-06-07T08:49:04.671Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -154,81 +155,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-搭建我的第一个hexo博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-docker学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      搭建我的第一个hexo博客
+      Docker学习
     </h1>
   
 
         
-        <a href="/2022/03/19/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2022-03-19T14:09:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-19</time>
+        <a href="/2021/11/04/docker%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2021-11-04T15:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
-</blockquote>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
-<li>安装<code>git</code>环境</li>
-<li>安装<code>node</code>环境</li>
-</ol>
-<h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><ol>
-<li><p>安装<code>hexo</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure></li>
-<li><p>新建一个目录，用于存放工程文件。开始初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我在当前用户目录下新建了一个blog目录，其实可以随意</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment"># 初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></li>
-<li><p>启动，访问<code>http://localhost:4000</code>预览</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简写：hexo s </span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h1><ol>
-<li><p>新建文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简写：hexo n &quot;我的第一篇文章&quot;</span></span><br><span class="line">hexo new <span class="string">&quot;我的第一篇文章&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出本地的所有镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索dockerHub上的镜像</span></span><br><span class="line">docker search 镜像名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从远程仓库中拉取镜像</span></span><br><span class="line">docker pull 镜像名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按镜像名或哈希值删除一个或多个镜像，加-f强制删除</span></span><br><span class="line">docker rmi 镜像名或<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地的所有镜像</span></span><br><span class="line">docker rmi $(docker images -qa)</span><br></pre></td></tr></table></figure>
 
-<p>执行后在工程目录下的：source/_posts中会生成一个空的markdown文件：我的第一篇文章.md</p>
-</li>
-<li><p>编辑这个md文件，添加自己的内容，保存</p>
-</li>
-<li><p>生成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清除之前生成的和缓存</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="comment"># 简写：hexo g</span></span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><blockquote>
-<p>这里演示部署到github上</p>
-</blockquote>
-<ol>
-<li><p>在github中新建一个仓库。</p>
-<p><strong>注意：仓库名一定要为：<code>&lt;当前github用户名&gt;.github.io</code></strong></p>
-</li>
-<li><p>在博客工程目录下安装git部署工具</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></li>
-<li><p>编辑工程根目录下的<code>_config.yml</code>配置文件，在文件最底部添加部署信息</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">第一步中新建的仓库的克隆地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></li>
-<li><p>部署到远端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简写：hexo d</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h1 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行容器，交互式启动：-i（交互式）、-t（伪终端）</span></span><br><span class="line">docker run -it 镜像<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器，守护式启动</span></span><br><span class="line">docker run -d 镜像<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器中退出并停止</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器退出但不停止</span></span><br><span class="line">⌃+P+Q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启容器</span></span><br><span class="line">docker restart 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器</span></span><br><span class="line">docker stop 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制停止容器</span></span><br><span class="line">docker <span class="built_in">kill</span> 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除已停止的单个容器</span></span><br><span class="line">docker <span class="built_in">rm</span> 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># 删除多个容器</span></span><br><span class="line">docker <span class="built_in">rm</span> -f $(docker ps -aq)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 查看正在运行的容器+历史上运行过的容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment"># 查看最近创建的容器</span></span><br><span class="line">docker ps -l</span><br><span class="line"><span class="comment"># 查看最近n次创建的容器</span></span><br><span class="line">docker ps -n 3</span><br><span class="line"><span class="comment"># 静默查看，只显示容器编号</span></span><br><span class="line">docker ps -q</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志：-t（显示时间戳）、-f（跟随最新的日志）、--tail n 显示最后n条</span></span><br><span class="line">docker logs -tf --<span class="built_in">tail</span> 3 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器内的进程</span></span><br><span class="line">docker top 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查容器内的细节，以json字符串形式返回</span></span><br><span class="line">docker inspect 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入正在运行的容器,</span></span><br><span class="line"><span class="comment"># 第一种，进入容器</span></span><br><span class="line">docker attach 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># 第二种，在容器中执行命令并将结果返回宿主机（隔山打牛），</span></span><br><span class="line"><span class="comment"># 例：docker exec 2b0a1908772c ls -l</span></span><br><span class="line"><span class="comment"># 例：docker exec -it 2b0a1908772c /bin/bash</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bashShell</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从容器拷贝文件到宿主机上</span></span><br><span class="line"><span class="comment"># 例：docker cp 2b0a1908772c:/home/hello.txt /Users/dongpengfei/desktop</span></span><br><span class="line">docker <span class="built_in">cp</span> 容器<span class="built_in">id</span>:容器内路径 宿主机路径</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交镜像</span></span><br><span class="line">docker commit -a=<span class="string">&quot;作者名&quot;</span> -m=<span class="string">&quot;描述&quot;</span> 容器<span class="built_in">id</span> 镜像名:版本号</span><br></pre></td></tr></table></figure>
 
-<p>将会推送到github仓库。</p>
-<p>若配置文件中的repo是https地址，则需要输入github账号和密码。</p>
-<p>若配置文件中的repo是ssh地址，则会自动验证身份，无需操作</p>
-</li>
-<li><p>通过<code>&lt;当前github用户名&gt;.github.io</code>访问</p>
-</li>
-</ol>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="更换皮肤"><a href="#更换皮肤" class="headerlink" title="更换皮肤"></a>更换皮肤</h2><ol>
-<li><p>看中一款心怡的皮肤（这里举例yilia），将其克隆到博客工程的themes目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/blog</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></li>
-<li><p>修改配置文件<code>_config.yml</code>中的主题为yilia</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br></pre></td></tr></table></figure></li>
-<li><p>重新生成、部署</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
-</ol>
+<h1 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动时挂载数据卷</span></span><br><span class="line"><span class="comment"># 此处宿主机挂载目录为/Users/dongpengfei/dev/myHostVolume，容器挂载目录为/myContainerVolume</span></span><br><span class="line">docker run -it -v /Users/dongpengfei/dev/myHostVolume:/myContainerVolume centos</span><br><span class="line"></span><br><span class="line"><span class="comment"># :ro（只读，容器内只可读不可写）</span></span><br><span class="line">docker run -it -v /Users/dongpengfei/dev/myHostVolume:/myContainerVolume:ro centos</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用DockerFile创建数据卷"><a href="#使用DockerFile创建数据卷" class="headerlink" title="使用DockerFile创建数据卷"></a>使用DockerFile创建数据卷</h2><p>DockerFile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">VOLUME</span><span class="language-bash"> [<span class="string">&quot;/containerVolume1&quot;</span>,<span class="string">&quot;/containerVolume2&quot;</span>]</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&quot;----------success1---------&quot;</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> /bin/bash</span></span><br></pre></td></tr></table></figure>
+
+<p>docker命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># （-f设置DockerFile文件路径，-t设置tag）</span></span><br><span class="line"><span class="comment"># 注意最后有一个英文点号！</span></span><br><span class="line">docker build -f /Users/dongpengfei/dev/mydocker/DockerFile -t <span class="string">&quot;zzyy/centos&quot;</span> .</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建第一个容器</span></span><br><span class="line">docker run -it --name dc01 zzyy/centos</span><br><span class="line"><span class="comment"># 使用第一个容器的数据卷创建第二个容器</span></span><br><span class="line">docker run -it --name dc02 --volumes-from dc01 zzyy/centos</span><br><span class="line"></span><br><span class="line"><span class="comment">## dc01和dc02的数据卷会共享。数据卷的生命周期一直持续到没有容器使用位置</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="本地镜像推送阿里云仓库"><a href="#本地镜像推送阿里云仓库" class="headerlink" title="本地镜像推送阿里云仓库"></a>本地镜像推送阿里云仓库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.在本地用容器提交镜像</span></span><br><span class="line">docker commit -a zzyy -m <span class="string">&quot;new centos with vim and ifconfig&quot;</span> 411ab1b82170 atguigu/mycentos:1.4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.在阿里云上上创建一个仓库</span></span><br><span class="line"><span class="comment"># 3.将镜像推送到Registry</span></span><br><span class="line">docker login --username=flya****nally registry.cn-chengdu.aliyuncs.com</span><br><span class="line">docker tag 89f7e45fa5bb registry.cn-chengdu.aliyuncs.com/atguigu-docker-study/mycentos:1.4.1</span><br><span class="line">docker push registry.cn-chengdu.aliyuncs.com/atguigu-docker-study/mycentos:1.4.1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.拉取镜像，此处使用mac m1为arm架构，所以拉取的是mysql/mysql-server</span></span><br><span class="line">docker pull mysql/mysql-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.启动容器（后台启动），此处取名叫docker-mysql，其实可以随意</span></span><br><span class="line">docker run -d --name docker-mysql -p 3306:3306 mysql/mysql-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.查看一次性密码（例：此处为12#n63mig/Fr1fi:2.8VISNb?:K8%G:q）。这个密码只能使用一次，登录mysql后请立即修改密码！</span></span><br><span class="line">docker logs mysql1 2&gt;&amp;1 | grep GENERATED</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.进入容器，登录mysql并修改root用户密码（此处设置为123456）</span></span><br><span class="line">docker <span class="built_in">exec</span> -it docker-mysql mysql -uroot -p</span><br><span class="line"><span class="comment"># 下面进入到了mysql中进行操作</span></span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.打开远程访问权限</span></span><br><span class="line">mysql&gt; use mysql;</span><br><span class="line">mysql&gt; update user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment"># 刷新权限（千万别忘了！）</span></span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 题外话：将docker中的数据库备份到宿主机上</span></span><br><span class="line">docker <span class="built_in">exec</span> 8f33bdab475e sh -c <span class="string">&#x27;exec mysqldump --all-databases -uroot -p123456&#x27;</span> &gt; /Users/dongpengfei/Desktop/dk-mysql-bak.sql</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -258,6 +224,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -308,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/19/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/04/docker%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,20 +299,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/04/01/Vim%E5%B0%8F%E6%8A%80%E5%B7%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/03/19/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vim
+          Hello World
         
       </div>
     </a>
   
-  
-    <a href="/2022/03/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

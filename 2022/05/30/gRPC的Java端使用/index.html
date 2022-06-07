@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>搭建我的第一个hexo博客 | Hexo</title>
+  <title>gRPC的Java端使用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="官方文档：https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;  准备工作 安装git环境 安装node环境  快速开始 安装hexo 1234# 安装npm install -g hexo-cli# 验证hexo -v 新建一个目录，用于存放工程文件。开始初始化 123456# 我在当前用户目录下新建了一个blog目录，其实可以随意cd ~mkdir blogcd blog# 初始化hexohexo i">
+  <meta name="description" content="介绍gRPC简介 gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment.  gRPC是一个现代、开源、高性能的远程调用（RPC） 框架，可以在任何环境中运行   适合场景 gRPC非常适合以下场景：  微服务 - gRPC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建我的第一个hexo博客">
-<meta property="og:url" content="http://example.com/2022/03/19/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="gRPC的Java端使用">
+<meta property="og:url" content="http://example.com/2022/05/30/gRPC%E7%9A%84Java%E7%AB%AF%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="官方文档：https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;  准备工作 安装git环境 安装node环境  快速开始 安装hexo 1234# 安装npm install -g hexo-cli# 验证hexo -v 新建一个目录，用于存放工程文件。开始初始化 123456# 我在当前用户目录下新建了一个blog目录，其实可以随意cd ~mkdir blogcd blog# 初始化hexohexo i">
+<meta property="og:description" content="介绍gRPC简介 gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment.  gRPC是一个现代、开源、高性能的远程调用（RPC） 框架，可以在任何环境中运行   适合场景 gRPC非常适合以下场景：  微服务 - gRPC">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-19T14:09:31.000Z">
-<meta property="article:modified_time" content="2022-06-07T08:50:14.966Z">
+<meta property="og:image" content="https://grpc.io/img/landing-2.svg">
+<meta property="og:image" content="http://example.com/Users/dongpengfei/Desktop/截屏2022-05-16%2014.28.34.png">
+<meta property="og:image" content="http://example.com/Users/dongpengfei/Desktop/截屏2022-05-16%2014.25.53.png">
+<meta property="article:published_time" content="2022-05-30T09:30:00.000Z">
+<meta property="article:modified_time" content="2022-06-07T08:46:22.762Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="gRPC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://grpc.io/img/landing-2.svg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -154,81 +159,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-搭建我的第一个hexo博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-gRPC的Java端使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      搭建我的第一个hexo博客
+      gRPC的Java端使用
     </h1>
   
 
         
-        <a href="/2022/03/19/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2022-03-19T14:09:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-19</time>
+        <a href="/2022/05/30/gRPC%E7%9A%84Java%E7%AB%AF%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-05-30T09:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="gRPC简介"><a href="#gRPC简介" class="headerlink" title="gRPC简介"></a>gRPC简介</h2><blockquote>
+<p>gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment.</p>
 </blockquote>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
-<li>安装<code>git</code>环境</li>
-<li>安装<code>node</code>环境</li>
-</ol>
-<h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><ol>
-<li><p>安装<code>hexo</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure></li>
-<li><p>新建一个目录，用于存放工程文件。开始初始化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我在当前用户目录下新建了一个blog目录，其实可以随意</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"><span class="comment"># 初始化hexo</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></li>
-<li><p>启动，访问<code>http://localhost:4000</code>预览</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简写：hexo s </span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h1><ol>
-<li><p>新建文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简写：hexo n &quot;我的第一篇文章&quot;</span></span><br><span class="line">hexo new <span class="string">&quot;我的第一篇文章&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>执行后在工程目录下的：source/_posts中会生成一个空的markdown文件：我的第一篇文章.md</p>
+<p><code>gRPC</code>是一个现代、开源、高性能的远程调用（RPC） 框架，可以在任何环境中运行</p>
+<p><img src="https://grpc.io/img/landing-2.svg" alt="gRPC"></p>
+<ul>
+<li><p><strong>适合场景</strong></p>
+<p>gRPC非常适合以下场景：</p>
+<ul>
+<li>微服务 - gRPC设计为低延迟和高吞吐量通信。gRPC非常适用于效率至关重要的轻型微服务。</li>
+<li>点对点实时通信 - gRPC对双向流媒体提供出色的支持。gRPC服务可以实时推送消息而无需轮询。</li>
+<li>多语言混合开发环境 - gRPC工具支持所有流行的开发语言，使gRPC成为多语言开发环境的理想选择。</li>
+<li>网络受限环境 - 使用Protobuf（一种轻量级消息格式）序列化gRPC消息。gRPC消息始终小于等效的JSON消息。</li>
+</ul>
 </li>
-<li><p>编辑这个md文件，添加自己的内容，保存</p>
+<li><p><strong>不建议使用场景</strong></p>
+<p>在以下场景中，建议使用其他框架而不是gRPC：</p>
+<ul>
+<li>浏览器可访问的API - 浏览器不完全支持gRPC。gRPC-Web可以提供浏览器支持，但它有局限性并引入了服务器代理。</li>
+<li>广播实时通信 - gRPC支持通过流媒体进行实时通信，但不存在向已注册连接广播消息的概念。例如，在应该将新聊天消息发送到聊天室中的所有客户端的聊天室场景中，需要每个gRPC呼叫以单独地将新的聊天消息流传输到客户端。对于这种场景，SignalR是这种情况的有用框架。SignalR具有持久连接的概念和对广播消息的内置支持。</li>
+<li>进程间通信 - 进程必须承载HTTP/2服务才能接受传入的gRPC调用。对于Windows，进程间通信管道是一种快速，轻量级的通信方法。</li>
+</ul>
 </li>
-<li><p>生成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清除之前生成的和缓存</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="comment"># 简写：hexo g</span></span><br><span class="line">hexo generate</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><blockquote>
-<p>这里演示部署到github上</p>
+</ul>
+<h2 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h2><blockquote>
+<p>一种轻便、高效的结构化数据存储方式，与语言、平台无关</p>
 </blockquote>
-<ol>
-<li><p>在github中新建一个仓库。</p>
-<p><strong>注意：仓库名一定要为：<code>&lt;当前github用户名&gt;.github.io</code></strong></p>
-</li>
-<li><p>在博客工程目录下安装git部署工具</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></li>
-<li><p>编辑工程根目录下的<code>_config.yml</code>配置文件，在文件最底部添加部署信息</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">第一步中新建的仓库的克隆地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></li>
-<li><p>部署到远端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简写：hexo d</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>gRPC框架默认使用的数据交换格式</li>
+<li>文件名以<code>.proto</code>结尾</li>
+<li>字段类型包含常见的数字、字符串、布尔、枚举、数组</li>
+<li>每个字段需要一个数字标识符，定义好后不能改变。最小的标识号可以从1开始，最大到2^29 - 1, or 536,870,911。不可以使用其中的[19000－19999]的标识号， Protobuf协议实现中对这些进行了预留。如果非要在.proto文件中使用这些预留标识号，编译时就会报警</li>
+</ul>
+<p>示例：</p>
+<p><code>person.proto</code></p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message </span><span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="type">int32</span> id = <span class="number">1</span>;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">2</span>;</span><br><span class="line">  <span class="type">bool</span> is_married = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>将会推送到github仓库。</p>
-<p>若配置文件中的repo是https地址，则需要输入github账号和密码。</p>
-<p>若配置文件中的repo是ssh地址，则会自动验证身份，无需操作</p>
-</li>
-<li><p>通过<code>&lt;当前github用户名&gt;.github.io</code>访问</p>
-</li>
+<h2 id="gRPC的四种通信模式"><a href="#gRPC的四种通信模式" class="headerlink" title="gRPC的四种通信模式"></a>gRPC的四种通信模式</h2><ol>
+<li>unary call 一元通信</li>
+<li>Server-side streaming RPC 服务端流式通信</li>
+<li>Client-side streaming RPC 客户端流式通信</li>
+<li>Bidirectional streaming RPC 双向流式通信</li>
 </ol>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="更换皮肤"><a href="#更换皮肤" class="headerlink" title="更换皮肤"></a>更换皮肤</h2><ol>
-<li><p>看中一款心怡的皮肤（这里举例yilia），将其克隆到博客工程的themes目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/blog</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></li>
-<li><p>修改配置文件<code>_config.yml</code>中的主题为yilia</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br></pre></td></tr></table></figure></li>
-<li><p>重新生成、部署</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
-</ol>
+<h1 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-protobuf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;grpc.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-stub<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;grpc.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-netty<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;grpc.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">extensions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extension</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>kr.motd.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>os-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extension</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.xolstice.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>protobuf-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">protocArtifact</span>&gt;</span></span><br><span class="line">          com.google.protobuf:protoc:3.19.2:exe:$&#123;os.detected.classifier&#125;																		<span class="tag">&lt;/<span class="name">protocArtifact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginId</span>&gt;</span>grpc-java<span class="tag">&lt;/<span class="name">pluginId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginArtifact</span>&gt;</span></span><br><span class="line">          io.grpc:protoc-gen-grpc-java:1.45.1:exe:$&#123;os.detected.classifier&#125;																	<span class="tag">&lt;/<span class="name">pluginArtifact</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile-custom<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="定义gRPC服务"><a href="#定义gRPC服务" class="headerlink" title="定义gRPC服务"></a>定义gRPC服务</h1><h2 id="定义proto文件"><a href="#定义proto文件" class="headerlink" title="定义proto文件"></a>定义proto文件</h2><figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">option</span> java_package = <span class="string">&quot;com.example.demo&quot;</span>;</span><br><span class="line"><span class="keyword">option</span> java_multiple_files = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">service </span><span class="title class_">Greeter</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// unary call</span></span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> SayHello (HelloRequest) <span class="keyword">returns</span> (HelloReply) </span>&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// server stream</span></span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> SayHelloAgain (HelloRequest) <span class="keyword">returns</span> (stream HelloReply) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">HelloRequest</span> &#123;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">HelloReply</span> &#123;</span><br><span class="line">  <span class="type">string</span> message = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h2><img src="/Users/dongpengfei/Desktop/截屏2022-05-16 14.28.34.png" alt="截屏2022-05-16 14.28.34" style="zoom:50%;" />
+
+
+
+<img src="/Users/dongpengfei/Desktop/截屏2022-05-16 14.25.53.png" alt="截屏2022-05-16 14.25.53" style="zoom:50%;" />
+
+<ul>
+<li><code>compile</code>: 生成proto文件</li>
+<li><code>compile-custom</code>: 生成gRPC文件</li>
+</ul>
+<h1 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h1><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><ul>
+<li><p>自己写一个类，继承<code>GreeterGrpc.GreeterImplBase</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GreeterService</span> <span class="keyword">extends</span> <span class="title class_">GreeterGrpc</span>.GreeterImplBase &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">(HelloRequest request, StreamObserver&lt;HelloReply&gt; responseObserver)</span> &#123;</span><br><span class="line">     	  System.out.println(request.getName());</span><br><span class="line">      	<span class="comment">// 构造返回对象</span></span><br><span class="line">        <span class="type">HelloReply</span> <span class="variable">helloReply</span> <span class="operator">=</span> HelloReply.newBuilder()</span><br><span class="line">                .setMessage(<span class="string">&quot;okok&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">        responseObserver.onNext(helloReply);</span><br><span class="line">      	<span class="comment">// 结束调用</span></span><br><span class="line">        responseObserver.onCompleted();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHelloAgain</span><span class="params">(HelloRequest request, StreamObserver&lt;HelloReply&gt; responseObserver)</span> &#123;</span><br><span class="line">        System.out.println(request.getName());</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="type">HelloReply</span> <span class="variable">helloReply</span> <span class="operator">=</span> HelloReply.newBuilder()</span><br><span class="line">                    .setMessage(<span class="string">&quot;okok&quot;</span> + i)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 多次调用onNext()</span></span><br><span class="line">            responseObserver.onNext(helloReply);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 结束调用</span></span><br><span class="line">        responseObserver.onCompleted();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>启动服务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">    <span class="type">Server</span> <span class="variable">server</span> <span class="operator">=</span> ServerBuilder.forPort(<span class="number">8527</span>)</span><br><span class="line">            .addService(<span class="keyword">new</span> <span class="title class_">GreeterService</span>())</span><br><span class="line">            .build()</span><br><span class="line">            .start();</span><br><span class="line">    System.out.println(<span class="string">&quot;server started&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;==============&quot;</span>);</span><br><span class="line">    server.awaitTermination();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>使用<code>stub</code>调用进行远程调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GreeterClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 指定主机和端口</span></span><br><span class="line">        <span class="type">ManagedChannel</span> <span class="variable">channel</span> <span class="operator">=</span> ManagedChannelBuilder.forAddress(<span class="string">&quot;localhost&quot;</span>, <span class="number">8527</span>)</span><br><span class="line">                .usePlaintext()</span><br><span class="line">                .build();</span><br><span class="line">        GreeterGrpc.<span class="type">GreeterBlockingStub</span> <span class="variable">blockingStub</span> <span class="operator">=</span> GreeterGrpc.newBlockingStub(channel);</span><br><span class="line">				</span><br><span class="line">      	<span class="comment">// 构造请求对象</span></span><br><span class="line">        <span class="type">HelloRequest</span> <span class="variable">helloRequest</span> <span class="operator">=</span> HelloRequest.newBuilder()</span><br><span class="line">                .setName(<span class="string">&quot;张三&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">      	<span class="comment">// 远程调用，获取响应 </span></span><br><span class="line">        <span class="type">HelloReply</span> <span class="variable">helloReply</span> <span class="operator">=</span> blockingStub.sayHello(helloRequest);</span><br><span class="line">        System.out.println(helloReply);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -258,6 +276,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gRPC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -308,7 +337,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/19/%E6%90%AD%E5%BB%BA%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAhexo%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/05/30/gRPC%E7%9A%84Java%E7%AB%AF%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,18 +351,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/04/01/Vim%E5%B0%8F%E6%8A%80%E5%B7%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vim
+          Linux指令
         
       </div>
     </a>
   
   
-    <a href="/2022/03/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2022/04/01/Vim%E5%B0%8F%E6%8A%80%E5%B7%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vim</div>
       <i class="icon-circle-right"></i>
     </a>
   
