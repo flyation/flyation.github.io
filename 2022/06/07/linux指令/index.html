@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Linux指令 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ls 列出目录   -l: 详细信息。简写：ll -h：显示文件大小的单位，利于人（humen）看 -t：按修改时间（time）排序，最新的排在最前 -S：按文件大小（Size）排序，最大的排在最前 -r：颠倒（reverse）排序  常用 | grep xxx：筛选处理结果中包含xxx的部分  | grep -v xxx：筛选处理结果中不包含xxx的部分  ps -ef | grep xxx：查">
+  <meta name="description" content="ls 列出目录   -l: 详细信息。简写：ll -a：列出所有节点，包含以.开头的 -h：显示文件大小的单位，利于人（humen）看 -t：按修改时间（time）排序，最新的排在最前 -S：按文件大小（Size）排序，最大的排在最前 -r：颠倒（reverse）排序  常用 | grep xxx：筛选处理结果中包含xxx的部分  | grep -v xxx：筛选处理结果中不包含xxx的部分  p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux指令">
 <meta property="og:url" content="http://example.com/2022/06/07/Linux%E6%8C%87%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ls 列出目录   -l: 详细信息。简写：ll -h：显示文件大小的单位，利于人（humen）看 -t：按修改时间（time）排序，最新的排在最前 -S：按文件大小（Size）排序，最大的排在最前 -r：颠倒（reverse）排序  常用 | grep xxx：筛选处理结果中包含xxx的部分  | grep -v xxx：筛选处理结果中不包含xxx的部分  ps -ef | grep xxx：查">
+<meta property="og:description" content="ls 列出目录   -l: 详细信息。简写：ll -a：列出所有节点，包含以.开头的 -h：显示文件大小的单位，利于人（humen）看 -t：按修改时间（time）排序，最新的排在最前 -S：按文件大小（Size）排序，最大的排在最前 -r：颠倒（reverse）排序  常用 | grep xxx：筛选处理结果中包含xxx的部分  | grep -v xxx：筛选处理结果中不包含xxx的部分  p">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-07T08:10:10.000Z">
-<meta property="article:modified_time" content="2022-06-07T08:47:21.368Z">
+<meta property="article:modified_time" content="2022-06-08T02:38:18.598Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Mac">
@@ -181,6 +181,7 @@
 </blockquote>
 <ul>
 <li><code>-l</code>: 详细信息。简写：<code>ll</code></li>
+<li><code>-a</code>：列出所有节点，包含以<code>.</code>开头的</li>
 <li><code>-h</code>：显示文件大小的单位，利于人（humen）看</li>
 <li><code>-t</code>：按修改时间（time）排序，最新的排在最前</li>
 <li><code>-S</code>：按文件大小（Size）排序，最大的排在最前</li>
@@ -436,6 +437,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -453,10 +458,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
             
             <div class="clearfix"></div>
