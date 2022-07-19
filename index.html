@@ -698,18 +698,22 @@
 <li><code>-r</code>：颠倒（reverse）排序</li>
 </ul>
 <h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><ul>
-<li><p><code>| grep xxx</code>：筛选处理结果中包含xxx的部分</p>
+<li><code>grep</code><ul>
+<li>直接命令形式：<code>grep ‘123’ test.log</code>在test.log文件中查找包含123的部分</li>
+<li>被动管道符形式：<code>| grep xxx</code>在管道符前面命令执行的结果中查找包含xxx的部分</li>
+<li><code>| grep xxx</code>：筛选处理结果中包含xxx的部分</li>
+<li><code>| grep -v xxx</code>：筛选处理结果中<strong>不</strong>包含xxx的部分</li>
+<li><code>| grep -C 3 xxx</code>：筛选处理结果中包含xxx的前后3行</li>
+<li><code>| grep -A 3 -B 3 xxx</code>：同上(可分别制定前后不同行数)</li>
+<li><code>| grep -3 xxx</code>：同上（简写形式）</li>
+<li><code>| grep -A 3 xxx</code>：筛选处理结果中包含xxx的后3行</li>
+<li><code>| grep -B 3 xxx</code>：筛选处理结果中包含xxx的前3行</li>
+</ul>
 </li>
-<li><p><code>| grep -v xxx</code>：筛选处理结果中<strong>不</strong>包含xxx的部分</p>
-</li>
-<li><p><code>ps -ef | grep xxx</code>：查询xxx进程</p>
-</li>
-<li><p><code>lsof -i tcp:xxxx</code>：查询xxxx端口</p>
-</li>
-<li><p><code>kill -9 xxxx</code>：强制关闭xxxx端口</p>
-</li>
-<li><p><code>open xxx</code>：（Mac中）打开文件/文件夹</p>
-</li>
+<li><code>ps -ef | grep xxx</code>：查询xxx进程</li>
+<li><code>lsof -i tcp:xxxx</code>：查询xxxx端口</li>
+<li><code>kill -9 xxxx</code>：强制关闭xxxx端口</li>
+<li><code>open xxx</code>：（Mac中）打开文件/文件夹</li>
 </ul>
 
       
@@ -1389,11 +1393,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
