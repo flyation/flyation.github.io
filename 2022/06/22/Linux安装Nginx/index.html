@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Spring | Hexo</title>
+  <title>Linux安装Nginx | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Maven: org.springframework:spring-beansorg.springframeworkspring.beans.factory接口BeanFactory spring bean容器的顶级接口  接口InitializingBean bean实现该接口，会在创建完成后执行afterPropertiesSet()  接口DisposableBean bean实现该接口，会">
+  <meta name="description" content="本文所用系统：CentOS 7.5 64位  通过源码编译安装 下载nginx-1.22.0，这里我放到&#x2F;opt目录下  解压缩  安装依赖库 123456789101112131415#安装C编译器（功能：预处理、编译、链接、汇编）yum install -y gcc#安装pcre库（功能：解析正则表达式）yum install -y pcre pcre-devel#安装zlib（功能：用于对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring">
-<meta property="og:url" content="http://example.com/2022/06/20/Spring/index.html">
+<meta property="og:title" content="Linux安装Nginx">
+<meta property="og:url" content="http://example.com/2022/06/22/Linux%E5%AE%89%E8%A3%85Nginx/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Maven: org.springframework:spring-beansorg.springframeworkspring.beans.factory接口BeanFactory spring bean容器的顶级接口  接口InitializingBean bean实现该接口，会在创建完成后执行afterPropertiesSet()  接口DisposableBean bean实现该接口，会">
+<meta property="og:description" content="本文所用系统：CentOS 7.5 64位  通过源码编译安装 下载nginx-1.22.0，这里我放到&#x2F;opt目录下  解压缩  安装依赖库 123456789101112131415#安装C编译器（功能：预处理、编译、链接、汇编）yum install -y gcc#安装pcre库（功能：解析正则表达式）yum install -y pcre pcre-devel#安装zlib（功能：用于对">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-20T07:52:37.000Z">
-<meta property="article:modified_time" content="2022-06-20T07:56:54.526Z">
+<meta property="article:published_time" content="2022-06-22T15:46:18.000Z">
+<meta property="article:modified_time" content="2022-09-28T02:23:15.693Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="CentOS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -155,95 +157,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux安装Nginx" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Spring
+      Linux安装Nginx
     </h1>
   
 
         
-        <a href="/2022/06/20/Spring/" class="archive-article-date">
-  	<time datetime="2022-06-20T07:52:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-20</time>
+        <a href="/2022/06/22/Linux%E5%AE%89%E8%A3%85Nginx/" class="archive-article-date">
+  	<time datetime="2022-06-22T15:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Maven-org-springframework-spring-beans"><a href="#Maven-org-springframework-spring-beans" class="headerlink" title="Maven: org.springframework:spring-beans"></a><code>Maven: org.springframework:spring-beans</code></h1><h2 id="org-springframeworkspring-beans-factory"><a href="#org-springframeworkspring-beans-factory" class="headerlink" title="org.springframeworkspring.beans.factory"></a><em>org.springframeworkspring.beans.factory</em></h2><h3 id="接口BeanFactory"><a href="#接口BeanFactory" class="headerlink" title="接口BeanFactory"></a>接口<code>BeanFactory</code></h3><blockquote>
-<p>spring bean容器的顶级接口</p>
+        <blockquote>
+<p>本文所用系统：CentOS 7.5 64位</p>
 </blockquote>
-<h3 id="接口InitializingBean"><a href="#接口InitializingBean" class="headerlink" title="接口InitializingBean"></a>接口<code>InitializingBean</code></h3><blockquote>
-<p>bean实现该接口，会在创建完成后执行afterPropertiesSet()</p>
-</blockquote>
-<h3 id="接口DisposableBean"><a href="#接口DisposableBean" class="headerlink" title="接口DisposableBean"></a>接口<code>DisposableBean</code></h3><blockquote>
-<p>bean实现该接口，会在销毁执行destroy()</p>
-</blockquote>
-<h2 id="org-springframeworkspring-beans-factory-annotation"><a href="#org-springframeworkspring-beans-factory-annotation" class="headerlink" title="org.springframeworkspring.beans.factory.annotation"></a><em>org.springframeworkspring.beans.factory.annotation</em></h2><h3 id="注解Autowired"><a href="#注解Autowired" class="headerlink" title="注解Autowired"></a>注解<code>Autowired</code></h3><blockquote>
-<p>自动注入</p>
-</blockquote>
-<h2 id="org-springframework-beans-factory-config"><a href="#org-springframework-beans-factory-config" class="headerlink" title="org.springframework.beans.factory.config"></a><em>org.springframework.beans.factory.config</em></h2><h3 id="接口BeanDefinition"><a href="#接口BeanDefinition" class="headerlink" title="接口BeanDefinition"></a>接口<code>BeanDefinition</code></h3><blockquote>
-<p>Bean定义信息</p>
-</blockquote>
-<h3 id="接口BeanFactoryPostProcessor"><a href="#接口BeanFactoryPostProcessor" class="headerlink" title="接口BeanFactoryPostProcessor"></a>接口<code>BeanFactoryPostProcessor</code></h3><blockquote>
-<p>BeanFactory后置处理器</p>
-</blockquote>
-<h3 id="接口BeanPostProcessor"><a href="#接口BeanPostProcessor" class="headerlink" title="接口BeanPostProcessor"></a>接口<code>BeanPostProcessor</code></h3><blockquote>
-<p> Bean后置处理器</p>
-</blockquote>
+<h1 id="通过源码编译安装"><a href="#通过源码编译安装" class="headerlink" title="通过源码编译安装"></a>通过源码编译安装</h1><ol>
+<li><p>下载<code>nginx-1.22.0</code>，这里我放到<code>/opt</code>目录下</p>
+</li>
+<li><p>解压缩</p>
+</li>
+<li><p>安装依赖库</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装C编译器（功能：预处理、编译、链接、汇编）</span></span><br><span class="line">yum install -y gcc</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装pcre库（功能：解析正则表达式）</span></span><br><span class="line">yum install -y pcre pcre-devel</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装zlib（功能：用于对数据进行压缩）</span></span><br><span class="line">yum install -y zlib zlib-devel</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装openssl（功能：网络加密通信）</span></span><br><span class="line">yum install -y openssl openssl-devel</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可用一条指令代替上面👆的</span></span><br><span class="line">yum install -y gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel</span><br></pre></td></tr></table></figure></li>
+<li><p>安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用prefix选项指定安装的目录，使用with-http_ssl_module添加https模块</span></span><br><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">make install</span><br></pre></td></tr></table></figure></li>
+<li><p>启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入nginx的sbin目录</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/nginx/sbin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">./nginx </span><br></pre></td></tr></table></figure></li>
+<li><p>放行端口。分下面两种情况</p>
 <ul>
-<li>postProcessBeforeInitialization()</li>
-<li>postProcessAfterInitialization()</li>
+<li><p>若为本地虚拟机，则手动关闭防火墙</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="comment"># 禁止防火墙开机启动</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure></li>
+<li><p>若为云服务器（阿里云、腾讯云…），则配置安全组策略</p>
+</li>
 </ul>
-<h3 id="类PropertyOverrideConfigurer"><a href="#类PropertyOverrideConfigurer" class="headerlink" title="类PropertyOverrideConfigurer"></a>类<code>PropertyOverrideConfigurer</code></h3><blockquote>
-<p>通过读取自定义的配置文件来覆盖bean definition中的属性值（工作模式: “推”）</p>
+</li>
+</ol>
+<p><em>nginx命令：</em></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速停止</span></span><br><span class="line">./nginx -s stop</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 完成已接受的请求后，停止</span></span><br><span class="line">./nginx -s quit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新加载配置</span></span><br><span class="line">./nginx -s reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查nginx配置是否正确</span></span><br><span class="line">./nginx -t</span><br></pre></td></tr></table></figure>
+
+<h1 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h1><blockquote>
+<p>通过系统服务的方式启动nginx</p>
 </blockquote>
-<h1 id="Maven-org-springframework-spring-context"><a href="#Maven-org-springframework-spring-context" class="headerlink" title="Maven: org.springframework:spring-context"></a><code>Maven: org.springframework:spring-context</code></h1><h2 id="org-springframework-context"><a href="#org-springframework-context" class="headerlink" title="org.springframework.context"></a>org.springframework.context</h2><h3 id="接口ApplicationContextAware"><a href="#接口ApplicationContextAware" class="headerlink" title="接口ApplicationContextAware"></a>接口<code>ApplicationContextAware</code></h3><h2 id="org-springframework-context-annotation"><a href="#org-springframework-context-annotation" class="headerlink" title="org.springframework.context.annotation"></a><em>org.springframework.context.annotation</em></h2><h3 id="注解Bean"><a href="#注解Bean" class="headerlink" title="注解Bean"></a>注解<code>Bean</code></h3><h2 id="org-springframework-context-support"><a href="#org-springframework-context-support" class="headerlink" title="org.springframework.context.support"></a><em>org.springframework.context.support</em></h2><h3 id="类PropertySourcesPlaceholderConfigurer"><a href="#类PropertySourcesPlaceholderConfigurer" class="headerlink" title="类PropertySourcesPlaceholderConfigurer"></a>类<code>PropertySourcesPlaceholderConfigurer</code></h3><blockquote>
-<p>替换bean definition中的${…}为配置文件中的真实值（工作模式: “拉”）</p>
-</blockquote>
-<h2 id="org-springframework-stereotype"><a href="#org-springframework-stereotype" class="headerlink" title="org.springframework.stereotype"></a><em>org.springframework.stereotype</em></h2><h3 id="注解Component"><a href="#注解Component" class="headerlink" title="注解Component"></a>注解<code>Component</code></h3><h3 id="注解Controller"><a href="#注解Controller" class="headerlink" title="注解Controller"></a>注解<code>Controller</code></h3><h3 id="注解Repository"><a href="#注解Repository" class="headerlink" title="注解Repository"></a>注解<code>Repository</code></h3><h3 id="注解Service"><a href="#注解Service" class="headerlink" title="注解Service"></a>注解<code>Service</code></h3><h1 id="Maven-org-springframework-spring-core"><a href="#Maven-org-springframework-spring-core" class="headerlink" title="Maven: org.springframework:spring-core"></a><code>Maven: org.springframework:spring-core</code></h1><h2 id="org-springframework-core"><a href="#org-springframework-core" class="headerlink" title="org.springframework.core"></a><em>org.springframework.core</em></h2><h3 id="接口Ordered"><a href="#接口Ordered" class="headerlink" title="接口Ordered"></a>接口<code>Ordered</code></h3><blockquote>
-<p> 表示排序的接口，值越小优先级越高</p>
-</blockquote>
-<h3 id="接口PriorityOrdered"><a href="#接口PriorityOrdered" class="headerlink" title="接口PriorityOrdered"></a>接口<code>PriorityOrdered</code></h3><blockquote>
-<p>继承自<code>Ordered</code>接口，当<code>PriorityOrdered</code>与纯<code>Ordered</code>一起排序时，<code>PriorityOrdered</code>的优先级总是比<code>Ordered</code>更高（无视其order value）</p>
-</blockquote>
-<h2 id="org-springframework-util"><a href="#org-springframework-util" class="headerlink" title="org.springframework.util"></a><em>org.springframework.util</em></h2><h3 id="抽象类FileCopyUtils"><a href="#抽象类FileCopyUtils" class="headerlink" title="抽象类FileCopyUtils"></a>抽象类<code>FileCopyUtils</code></h3><blockquote>
-<p>Stream工具类，会手动关闭流</p>
-</blockquote>
-<h3 id="抽象类StreamUtils"><a href="#抽象类StreamUtils" class="headerlink" title="抽象类StreamUtils"></a>抽象类<code>StreamUtils</code></h3><blockquote>
-<p>Stream工具类，不会关闭流</p>
-</blockquote>
-<h3 id="抽象类StringUtils"><a href="#抽象类StringUtils" class="headerlink" title="抽象类StringUtils"></a>抽象类<code>StringUtils</code></h3><blockquote>
-<p>String工具类</p>
-</blockquote>
-<p><code>LIFECYCLE CALLBACK</code></p>
-<table>
-<thead>
-<tr>
-<th>-</th>
-<th>硬编码（官方不推荐）</th>
-<th>注解</th>
-<th>xml</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>初始化后</td>
-<td>类实现<code>InitializingBean</code>接口</td>
-<td><code>@BEAN</code>注解中的<code>initMethod</code>属性（Spring）或方法添加注解<code>@PostConstruct</code>（JSR-250）</td>
-<td><code>init-method</code>属性</td>
-</tr>
-<tr>
-<td>销毁前</td>
-<td>类实现<code>DisposableBean</code>接口</td>
-<td><code>@BEAN</code>注解中的<code>destroyMethod</code>属性（Spring）或方法添加注解<code>@PreDestroy</code>（JSR-250）</td>
-<td><code>destroy-method</code>属性</td>
-</tr>
-</tbody></table>
+<ol>
+<li>创建服务脚本</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>服务脚本内容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit] </span><br><span class="line">Description=nginx</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/usr/local/nginx/logs/nginx.pid</span><br><span class="line">ExecStartPre=/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line">ExecQuit=/usr/local/nginx/sbin/nginx -s quit </span><br><span class="line">PrivateTmp=true</span><br><span class="line">   </span><br><span class="line">[Install]   </span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>重新加载系统服务</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>设置开机启动</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> nginx.service</span><br></pre></td></tr></table></figure>
+
+<p><em>系统服务命令：</em></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看nginx状态</span></span><br><span class="line">systemctl status nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动nginx</span></span><br><span class="line">systemctl start nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止nginx</span></span><br><span class="line">systemctl stop nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启nginx</span></span><br><span class="line">systemctl restart nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重载nginx配置文件</span></span><br><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+
+<h1 id="增加https模块"><a href="#增加https模块" class="headerlink" title="增加https模块"></a>增加<code>https</code>模块</h1><p>若安装nginx时没有安装<code>http_ssl_module</code>模块，通过以下方式增加</p>
+<p><strong>记得先关闭运行的nginx！！！</strong></p>
+<ol>
+<li>进入nginx源码包目录</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/nginx-1.22.0</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查看<code>configure arguments</code>参数</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>追加https模块的参数</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>执行<code>make</code>（不能是<code>make install</code>，否则会覆盖安装）</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>当前目录下会生出一个<code>objs</code>文件夹，将里面的<code>nginx</code>文件复制覆盖到<code>/usr/local/nginx/sbin</code>中</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> ./objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>重启nginx，通过命令查看发现已经增加了https模块</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V　</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -278,7 +295,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CentOS</a>
         		</li>
       		
 		</ul>
@@ -334,7 +359,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/20/Spring/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/22/Linux%E5%AE%89%E8%A3%85Nginx/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,18 +373,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          支付对接
+          设计模式
         
       </div>
     </a>
   
   
-    <a href="/2022/06/08/Git%E6%8C%87%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git指令</div>
+    <a href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">支付对接</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -485,7 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +530,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,10 +546,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
@@ -537,7 +558,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
