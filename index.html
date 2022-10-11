@@ -797,11 +797,12 @@
 </ul>
 <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><ul>
 <li><code>git branch</code>：不带任何参数，列出所有本地分支</li>
-<li><code>git branch xxx</code>：以当前分支的最新提交创建xxx分支</li>
-<li><code>git checkout xxx</code>：切换到xxx分支</li>
-<li><code>git checkout -b xxx</code>：创建xxx分支并立即切换到该分支</li>
-<li><code>git branch -d xxx</code>：删除xxx分支</li>
-<li><code>git merge xxx</code>：将xxx分支合并到当前分支</li>
+<li><code>git branch &lt;branchName&gt;</code>：以当前分支的最新提交创建新分支</li>
+<li><code>git checkout &lt;branchName&gt;</code>：切换到指定分支</li>
+<li><code>git checkout -b &lt;branchName&gt;</code>：创建新分支并立即切换到该分支</li>
+<li><code>git branch -d &lt;branchName&gt;</code>：删除指定分支（本地）（如果有未提交的文件，则会删除失败）</li>
+<li><code>git branch -D &lt;branchName&gt;</code>：强制删除指定分支（本地）</li>
+<li><code>git merge &lt;branchName&gt;</code>：将指定分支合并到当前分支</li>
 </ul>
 <h1 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h1><ul>
 <li><code>git log</code>：查看历史提交记录</li>
@@ -1586,7 +1587,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,11 +1603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1615,6 +1616,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1627,22 +1644,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
             
             <div class="clearfix"></div>
