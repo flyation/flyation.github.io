@@ -152,6 +152,173 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-《现代JavaScript教程》笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/18/%E3%80%8A%E7%8E%B0%E4%BB%A3JavaScript%E6%95%99%E7%A8%8B%E3%80%8B%E7%AC%94%E8%AE%B0/">《现代JavaScript教程》笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/18/%E3%80%8A%E7%8E%B0%E4%BB%A3JavaScript%E6%95%99%E7%A8%8B%E3%80%8B%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2022-10-18T03:14:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.javascript.info/">https://zh.javascript.info</a></p>
+</blockquote>
+<h1 id="第一部分-JavaScript-编程语言"><a href="#第一部分-JavaScript-编程语言" class="headerlink" title="第一部分 JavaScript 编程语言"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/#tab-1">第一部分 JavaScript 编程语言</a></h1><h2 id="JavaScript-基础知识"><a href="#JavaScript-基础知识" class="headerlink" title="JavaScript 基础知识"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/first-steps">JavaScript 基础知识</a></h2><h3 id="2-5-数据类型"><a href="#2-5-数据类型" class="headerlink" title="2.5 数据类型"></a>2.5 <a target="_blank" rel="noopener" href="https://zh.javascript.info/types">数据类型</a></h3><p><a target="_blank" rel="noopener" href="https://zh.javascript.info/types#zong-jie">总结</a></p>
+<p>JavaScript 中有八种基本的数据类型（译注：前七种为基本数据类型，也称为原始数据类型，而 <code>object</code> 为复杂数据类型）。</p>
+<ul>
+<li>七种原始数据类型：<ul>
+<li><code>number</code> 用于任何类型的数字：整数或浮点数，在 <code>±(253-1)</code> 范围内的整数。</li>
+<li><code>bigint</code> 用于任意长度的整数。</li>
+<li><code>string</code> 用于字符串：一个字符串可以包含 0 个或多个字符，所以没有单独的单字符类型。</li>
+<li><code>boolean</code> 用于 <code>true</code> 和 <code>false</code>。</li>
+<li><code>null</code> 用于未知的值 —— 只有一个 <code>null</code> 值的独立类型。</li>
+<li><code>undefined</code> 用于未定义的值 —— 只有一个 <code>undefined</code> 值的独立类型。</li>
+<li><code>symbol</code> 用于唯一的标识符。</li>
+</ul>
+</li>
+<li>以及一种非原始数据类型：<ul>
+<li><code>object</code> 用于更复杂的数据结构。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-7-类型转换"><a href="#2-7-类型转换" class="headerlink" title="2.7 类型转换"></a>2.7 <a target="_blank" rel="noopener" href="https://zh.javascript.info/type-conversions">类型转换</a></h3><p><a target="_blank" rel="noopener" href="https://zh.javascript.info/type-conversions#shu-zi-xing-zhuan-huan">数字型转换</a></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>变成…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>undefined</code></td>
+<td><code>NaN</code></td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>true </code>和 <code>false</code></td>
+<td><code>1</code> and <code>0</code></td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>去掉首尾空白字符（空格、换行符 <code>\n</code>、制表符 <code>\t</code> 等）后的纯数字字符串中含有的数字。如果剩余字符串为空，则转换结果为 <code>0</code>。否则，将会从剩余字符串中“读取”数字。当类型转换出现 error 时返回 <code>NaN</code>。</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://zh.javascript.info/type-conversions#bu-er-xing-zhuan-huan">布尔型转换</a></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>变成…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直观上为“空”的值：<code>0</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code>, <code>&quot;&quot;</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>其他值</td>
+<td><code>true</code></td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://zh.javascript.info/type-conversions#zong-jie">总结</a></p>
+<p>有三种常用的类型转换：转换为 string 类型、转换为 number 类型和转换为 boolean 类型。</p>
+<ul>
+<li>字符串也可显示转换：<code>String(value)</code></li>
+<li>数字型也可显示转换：<code>Number(value)</code></li>
+<li>布尔型也可显示转换：<code>Boolean(value)</code></li>
+</ul>
+<p>上述的大多数规则都容易理解和记忆。人们通常会犯错误的值得注意的例子有以下几个：</p>
+<ul>
+<li>对 <code>undefined</code> 进行数字型转换时，输出结果为 <code>NaN</code>，而非 <code>0</code>。</li>
+<li>对 <code>&quot;0&quot;</code> 和只有空格的字符串（比如：<code>&quot; &quot;</code>）进行布尔型转换时，输出结果为 <code>true</code>。</li>
+</ul>
+<h3 id="2-9-值的比较"><a href="#2-9-值的比较" class="headerlink" title="2.9 值的比较"></a>2.9 <a target="_blank" rel="noopener" href="https://zh.javascript.info/comparison">值的比较</a></h3><p><a target="_blank" rel="noopener" href="https://zh.javascript.info/comparison#zong-jie">总结</a></p>
+<ul>
+<li><p>比较运算符始终返回布尔值。</p>
+</li>
+<li><p>字符串的比较，会按照“词典”顺序逐字符地比较大小。</p>
+</li>
+<li><p>当对不同类型的值进行比较时，它们会先被转化为数字（不包括严格相等检查（<code>===</code>））再进行比较。</p>
+</li>
+<li><p>在非严格相等 <code>==</code> 下，<code>null</code> 和 <code>undefined</code> 相等且各自不等于任何其他的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当使用 null 或 undefined 与其他值进行比较时，其返回结果常常出乎你的意料。</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>( <span class="literal">null</span> == <span class="literal">undefined</span> ); <span class="comment">// true。JavaScript 存在一个特殊的规则，会判定它们相等。它们俩就像“一对恋人”，仅仅等于对方而不等于其他任何的值（只在非严格相等下成立）。</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>( <span class="literal">null</span> === <span class="literal">undefined</span> ); <span class="comment">// false。它们不相等，因为它们属于不同的类型。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在使用 <code>&gt;</code> 或 <code>&lt;</code> 进行比较时，需要注意变量可能为 <code>null/undefined</code> 的情况。比较好的方法是单独检查变量是否等于 <code>null/undefined</code>。</p>
+</li>
+</ul>
+<p>🤣</p>
+<p><a target="_blank" rel="noopener" href="https://uploads.disquscdn.com/images/c9dd23715dd373b6a4b2a7dbea358c5585d7585b85e4a29448dabfd893b1cc73.png"><img src="https://uploads.disquscdn.com/images/c9dd23715dd373b6a4b2a7dbea358c5585d7585b85e4a29448dabfd893b1cc73.png?w=800&h=547" alt="Thumbnail"></a></p>
+<h1 id="第二部分-浏览器：文档，事件，接口"><a href="#第二部分-浏览器：文档，事件，接口" class="headerlink" title="第二部分 浏览器：文档，事件，接口"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/#tab-2">第二部分 浏览器：文档，事件，接口</a></h1><h1 id="第三部分-其他文章"><a href="#第三部分-其他文章" class="headerlink" title="第三部分 其他文章"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/#tab-3">第三部分 其他文章</a></h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/18/%E3%80%8A%E7%8E%B0%E4%BB%A3JavaScript%E6%95%99%E7%A8%8B%E3%80%8B%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-变量命名" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1376,114 +1543,6 @@
 
 
   
-    <article id="post-Docker学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/30/Docker%E5%AD%A6%E4%B9%A0/">Docker学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/30/Docker%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-03-30T15:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出本地的所有镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索dockerHub上的镜像</span></span><br><span class="line">docker search 镜像名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从远程仓库中拉取镜像</span></span><br><span class="line">docker pull 镜像名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按镜像名或哈希值删除一个或多个镜像，加-f强制删除</span></span><br><span class="line">docker rmi 镜像名或<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除本地的所有镜像</span></span><br><span class="line">docker rmi $(docker images -qa)</span><br></pre></td></tr></table></figure>
-
-<h1 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行容器，交互式启动：-i（交互式）、-t（伪终端）</span></span><br><span class="line">docker run -it 镜像<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器，守护式启动</span></span><br><span class="line">docker run -d 镜像<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器中退出并停止</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器退出但不停止</span></span><br><span class="line">⌃+P+Q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启容器</span></span><br><span class="line">docker restart 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器</span></span><br><span class="line">docker stop 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制停止容器</span></span><br><span class="line">docker <span class="built_in">kill</span> 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除已停止的单个容器</span></span><br><span class="line">docker <span class="built_in">rm</span> 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># 删除多个容器</span></span><br><span class="line">docker <span class="built_in">rm</span> -f $(docker ps -aq)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 查看正在运行的容器+历史上运行过的容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment"># 查看最近创建的容器</span></span><br><span class="line">docker ps -l</span><br><span class="line"><span class="comment"># 查看最近n次创建的容器</span></span><br><span class="line">docker ps -n 3</span><br><span class="line"><span class="comment"># 静默查看，只显示容器编号</span></span><br><span class="line">docker ps -q</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志：-t（显示时间戳）、-f（跟随最新的日志）、--tail n 显示最后n条</span></span><br><span class="line">docker logs -tf --<span class="built_in">tail</span> 3 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器内的进程</span></span><br><span class="line">docker top 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查容器内的细节，以json字符串形式返回</span></span><br><span class="line">docker inspect 容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入正在运行的容器,</span></span><br><span class="line"><span class="comment"># 第一种，进入容器</span></span><br><span class="line">docker attach 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment"># 第二种，在容器中执行命令并将结果返回宿主机（隔山打牛），</span></span><br><span class="line"><span class="comment"># 例：docker exec 2b0a1908772c ls -l</span></span><br><span class="line"><span class="comment"># 例：docker exec -it 2b0a1908772c /bin/bash</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bashShell</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从容器拷贝文件到宿主机上</span></span><br><span class="line"><span class="comment"># 例：docker cp 2b0a1908772c:/home/hello.txt /Users/dongpengfei/desktop</span></span><br><span class="line">docker <span class="built_in">cp</span> 容器<span class="built_in">id</span>:容器内路径 宿主机路径</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交镜像</span></span><br><span class="line">docker commit -a=<span class="string">&quot;作者名&quot;</span> -m=<span class="string">&quot;描述&quot;</span> 容器<span class="built_in">id</span> 镜像名:版本号</span><br></pre></td></tr></table></figure>
-
-<h1 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动时挂载数据卷</span></span><br><span class="line"><span class="comment"># 此处宿主机挂载目录为/Users/dongpengfei/dev/myHostVolume，容器挂载目录为/myContainerVolume</span></span><br><span class="line">docker run -it -v /Users/dongpengfei/dev/myHostVolume:/myContainerVolume centos</span><br><span class="line"></span><br><span class="line"><span class="comment"># :ro（只读，容器内只可读不可写）</span></span><br><span class="line">docker run -it -v /Users/dongpengfei/dev/myHostVolume:/myContainerVolume:ro centos</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用DockerFile创建数据卷"><a href="#使用DockerFile创建数据卷" class="headerlink" title="使用DockerFile创建数据卷"></a>使用DockerFile创建数据卷</h2><p>DockerFile：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">VOLUME</span><span class="language-bash"> [<span class="string">&quot;/containerVolume1&quot;</span>,<span class="string">&quot;/containerVolume2&quot;</span>]</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&quot;----------success1---------&quot;</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> /bin/bash</span></span><br></pre></td></tr></table></figure>
-
-<p>docker命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># （-f设置DockerFile文件路径，-t设置tag）</span></span><br><span class="line"><span class="comment"># 注意最后有一个英文点号！</span></span><br><span class="line">docker build -f /Users/dongpengfei/dev/mydocker/DockerFile -t <span class="string">&quot;zzyy/centos&quot;</span> .</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建第一个容器</span></span><br><span class="line">docker run -it --name dc01 zzyy/centos</span><br><span class="line"><span class="comment"># 使用第一个容器的数据卷创建第二个容器</span></span><br><span class="line">docker run -it --name dc02 --volumes-from dc01 zzyy/centos</span><br><span class="line"></span><br><span class="line"><span class="comment">## dc01和dc02的数据卷会共享。数据卷的生命周期一直持续到没有容器使用位置</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="本地镜像推送阿里云仓库"><a href="#本地镜像推送阿里云仓库" class="headerlink" title="本地镜像推送阿里云仓库"></a>本地镜像推送阿里云仓库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.在本地用容器提交镜像</span></span><br><span class="line">docker commit -a zzyy -m <span class="string">&quot;new centos with vim and ifconfig&quot;</span> 411ab1b82170 atguigu/mycentos:1.4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.在阿里云上上创建一个仓库</span></span><br><span class="line"><span class="comment"># 3.将镜像推送到Registry</span></span><br><span class="line">docker login --username=flya****nally registry.cn-chengdu.aliyuncs.com</span><br><span class="line">docker tag 89f7e45fa5bb registry.cn-chengdu.aliyuncs.com/atguigu-docker-study/mycentos:1.4.1</span><br><span class="line">docker push registry.cn-chengdu.aliyuncs.com/atguigu-docker-study/mycentos:1.4.1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.拉取镜像，此处使用mac m1为arm架构，所以拉取的是mysql/mysql-server</span></span><br><span class="line">docker pull mysql/mysql-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.启动容器（后台启动），此处取名叫docker-mysql，其实可以随意</span></span><br><span class="line">docker run -d --name docker-mysql -p 3306:3306 mysql/mysql-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.查看一次性密码（例：此处为12#n63mig/Fr1fi:2.8VISNb?:K8%G:q）。这个密码只能使用一次，登录mysql后请立即修改密码！</span></span><br><span class="line">docker logs mysql1 2&gt;&amp;1 | grep GENERATED</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.进入容器，登录mysql并修改root用户密码（此处设置为123456）</span></span><br><span class="line">docker <span class="built_in">exec</span> -it docker-mysql mysql -uroot -p</span><br><span class="line"><span class="comment"># 下面进入到了mysql中进行操作</span></span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.打开远程访问权限</span></span><br><span class="line">mysql&gt; use mysql;</span><br><span class="line">mysql&gt; update user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment"># 刷新权限（千万别忘了！）</span></span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 题外话：将docker中的数据库备份到宿主机上</span></span><br><span class="line">docker <span class="built_in">exec</span> 8f33bdab475e sh -c <span class="string">&#x27;exec mysqldump --all-databases -uroot -p123456&#x27;</span> &gt; /Users/dongpengfei/Desktop/dk-mysql-bak.sql</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="制作一个简单的springboot-web项目镜像"><a href="#制作一个简单的springboot-web项目镜像" class="headerlink" title="制作一个简单的springboot web项目镜像"></a>制作一个简单的springboot web项目镜像</h1><ol>
-<li><p>创建springboot web工程，写一个简单接口用于调用测试</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;🤣 request GET &#x27;/hello&#x27;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;🎵 hello from the other side ～&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>使用maven插件打包（<code>package</code>），生成jar包</p>
-</li>
-<li><p>编写<code>Dockerfile</code>文件</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment"># 基础环境</span></span><br><span class="line">   <span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-slim</span><br><span class="line">   <span class="comment"># 作者</span></span><br><span class="line">   <span class="keyword">LABEL</span><span class="language-bash"> maintainer = fly</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment"># 复制jar包到容器中并重命名为app.jar</span></span><br><span class="line">   <span class="keyword">COPY</span><span class="language-bash"> target/*.jar /app.jar</span></span><br><span class="line">   <span class="comment"># 启动命令：ENTRYPOINT或CMD</span></span><br><span class="line">   <span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;/app.jar&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>. 上传文件到linux服务器上，目录结构：</span><br><span class="line"></span><br><span class="line">   ```sh</span><br><span class="line">   /demo</span><br><span class="line">   ├── Dockerfile</span><br><span class="line">   └── target</span><br><span class="line">       └── docker-test-<span class="number">0.0</span>.<span class="number">1</span>-SNAPSHOT.jar</span><br></pre></td></tr></table></figure></li>
-<li><p>构建镜像</p>
-<p>进入Dockerfile所在路径，输入命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t springboot-demo:v1.0 .</span><br></pre></td></tr></table></figure>
-
-<p>构建完成。</p>
-<p>查看镜像：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/30/Docker%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1581,31 +1640,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1629,19 +1680,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1654,6 +1705,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
