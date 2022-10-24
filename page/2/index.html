@@ -152,6 +152,152 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Vim" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/01/Vim/">Vim</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/01/Vim/" class="archive-article-date">
+  	<time datetime="2022-04-01T12:34:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="查看软件信息"><a href="#查看软件信息" class="headerlink" title="查看软件信息"></a>查看软件信息</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h1><ul>
+<li>普通模式</li>
+<li>输入模式</li>
+<li>命令模式</li>
+</ul>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h2><ul>
+<li><code>k</code>：上（k代表king，比jack大）</li>
+<li><code>j</code>：下（代表jack）</li>
+<li><code>h</code>：左</li>
+<li><code>l</code>：右</li>
+</ul>
+<ul>
+<li><code>gg</code>：顶部</li>
+<li><code>Shift</code> + <code>g</code>：地底部</li>
+<li>（命令模式下）<code>:</code> + <code>行号</code>：直接跳转到指定行</li>
+</ul>
+<ul>
+<li><code>w</code>：跳到下个单词首部（word）</li>
+<li><code>e</code>：跳到下个单词尾部（end）</li>
+<li><code>b</code>：跳到上个单词首部（back）</li>
+</ul>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>在普通模式下，键入：</p>
+<ul>
+<li><code>i</code>：在光标位置前输入（insert）</li>
+<li><code>a</code>：在光标位置后输入（append）</li>
+<li><code>o</code>：在光标位置下方新增一行（open a new line）</li>
+<li><code>Shift</code> + <code>o</code>：在光标位置上方新增一行</li>
+</ul>
+<h2 id="复制、粘贴、删除"><a href="#复制、粘贴、删除" class="headerlink" title="复制、粘贴、删除"></a>复制、粘贴、删除</h2><ul>
+<li><code>yy</code>：复制当前行（yank）</li>
+<li><code>p</code>：粘贴（paste）</li>
+<li><code>数字</code> + <code>p</code>：多次粘贴</li>
+<li><code>dd</code>：删除当前行（delete）</li>
+<li><code>数字</code> + <code>dd</code>：删除以当前行开始的多行</li>
+<li><code>.</code>：重复上一次操作</li>
+<li><code>u</code>：撤回上一次操作（undo）</li>
+<li><code>Ctrl</code> + <code>r</code>：取消上一次的撤回</li>
+</ul>
+<ul>
+<li><code>dw</code>：删除一个单词（delete word）</li>
+<li><code>cw</code>：改变一个单词（change word）（并进入编辑模式）</li>
+<li><code>yw</code>：复制一个单词（yank word）</li>
+</ul>
+<h2 id="搜索、替换"><a href="#搜索、替换" class="headerlink" title="搜索、替换"></a>搜索、替换</h2><ul>
+<li><p><code>/</code> + <code>搜索内容</code>：搜索指定内容</p>
+<ul>
+<li>有多个结果时，<code>n</code>下一个，<code>N</code>上一个</li>
+</ul>
+</li>
+<li><p><code>:%s</code> + <code>/旧内容</code> + <code>/新内容</code> + <code>/g</code>：全局替换指定内容（global）</p>
+</li>
+</ul>
+<h1 id="配置vim显示行号和语法高亮"><a href="#配置vim显示行号和语法高亮" class="headerlink" title="配置vim显示行号和语法高亮"></a>配置vim显示行号和语法高亮</h1><blockquote>
+<p>特别好</p>
+</blockquote>
+<ol>
+<li><p>进入当前用户家目录</p>
+</li>
+<li><p>编辑<code>.vimrc</code>，首次创建前是没有这个文件的，没关系</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure></li>
+<li><p>添加内容：显示行号和语法高亮</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set number</span><br><span class="line">syntax on</span><br></pre></td></tr></table></figure></li>
+<li><p>保存后生效</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vim</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小技巧</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/01/Vim/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Docker学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -549,11 +695,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,15 +731,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,19 +751,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,22 +776,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
