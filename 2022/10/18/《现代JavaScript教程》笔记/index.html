@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://uploads.disquscdn.com/images/c9dd23715dd373b6a4b2a7dbea358c5585d7585b85e4a29448dabfd893b1cc73.png?w=800&h=547">
 <meta property="article:published_time" content="2022-10-18T03:14:38.000Z">
-<meta property="article:modified_time" content="2022-10-24T02:50:25.467Z">
+<meta property="article:modified_time" content="2022-10-28T09:32:26.435Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="JS">
@@ -261,7 +261,7 @@
 </li>
 <li><p>当对不同类型的值进行比较时，它们会先被转化为数字（不包括严格相等检查（<code>===</code>））再进行比较。</p>
 </li>
-<li><p>在非严格相等 <code>==</code> 下，<code>null</code> 和 <code>undefined</code> 相等且各自不等于任何其他的值。</p>
+<li><p><strong>在非严格相等 <code>==</code> 下，<code>null</code> 和 <code>undefined</code> 相等且各自不等于任何其他的值。</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当使用 null 或 undefined 与其他值进行比较时，其返回结果常常出乎你的意料。</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>( <span class="literal">null</span> == <span class="literal">undefined</span> ); <span class="comment">// true。JavaScript 存在一个特殊的规则，会判定它们相等。它们俩就像“一对恋人”，仅仅等于对方而不等于其他任何的值（只在非严格相等下成立）。</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>( <span class="literal">null</span> === <span class="literal">undefined</span> ); <span class="comment">// false。它们不相等，因为它们属于不同的类型。</span></span><br></pre></td></tr></table></figure></li>
 <li><p>在使用 <code>&gt;</code> 或 <code>&lt;</code> 进行比较时，需要注意变量可能为 <code>null/undefined</code> 的情况。比较好的方法是单独检查变量是否等于 <code>null/undefined</code>。</p>
 </li>
@@ -310,6 +310,23 @@
 <li>输入 <code>2</code>，第二个 <code>alert</code> 弹出。</li>
 <li>但是输入 <code>3</code>，因为 <code>prompt</code> 的结果是字符串类型的 <code>&quot;3&quot;</code>，不严格相等 <code>===</code> 于数字类型的 <code>3</code>，所以 <code>case 3</code> 不会执行！因此 <code>case 3</code> 部分是一段无效代码。所以会执行 <code>default</code> 分支。</li>
 </ol>
+<h2 id="Object（对象）：基础知识"><a href="#Object（对象）：基础知识" class="headerlink" title="Object（对象）：基础知识"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-basics">Object（对象）：基础知识</a></h2><h3 id="4-2-对象引用和复制"><a href="#4-2-对象引用和复制" class="headerlink" title="4.2 对象引用和复制"></a>4.2 <a target="_blank" rel="noopener" href="https://zh.javascript.info/object-copy">对象引用和复制</a></h3><blockquote>
+<p>对象与原始类型的根本区别之一是，对象是“通过引用”存储和复制的，而原始类型：字符串、数字、布尔值等 —— 总是“作为一个整体”复制。</p>
+</blockquote>
+<h4 id="克隆与合并，Object-assign"><a href="#克隆与合并，Object-assign" class="headerlink" title="克隆与合并，Object.assign"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-copy#cloning-and-merging-object-assign">克隆与合并，Object.assign</a></h4><p>那么，拷贝一个对象变量会又创建一个对相同对象的引用。</p>
+<p>但是，如果我们想要复制一个对象，那该怎么做呢？</p>
+<p>我们也可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign</a> 方法来达成同样的效果。</p>
+<p>语法是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(dest, [src1, src2, src3...])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一个参数 <code>dest</code> 是指目标对象。</li>
+<li>更后面的参数 <code>src1, ..., srcN</code>（可按需传递多个参数）是源对象。</li>
+<li>该方法将所有源对象的属性拷贝到目标对象 <code>dest</code> 中。换句话说，从第二个开始的所有参数的属性都被拷贝到第一个参数的对象中。</li>
+<li>调用结果返回 <code>dest</code>。</li>
+</ul>
+<p><strong>Object.assign()只拷贝了一层，并不是深拷贝。</strong></p>
+<p><strong>我们可以使用递归来实现深拷贝。或者为了不重复造轮子，采用现有的实现，例如 <a target="_blank" rel="noopener" href="https://lodash.com/">lodash</a> 库的 <a target="_blank" rel="noopener" href="https://lodash.com/docs#cloneDeep">_.cloneDeep(obj)</a>。</strong></p>
 <h1 id="第二部分-浏览器：文档，事件，接口"><a href="#第二部分-浏览器：文档，事件，接口" class="headerlink" title="第二部分 浏览器：文档，事件，接口"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/#tab-2">第二部分 浏览器：文档，事件，接口</a></h1><h1 id="第三部分-其他文章"><a href="#第三部分-其他文章" class="headerlink" title="第三部分 其他文章"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/#tab-3">第三部分 其他文章</a></h1>
       
 
@@ -591,6 +608,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -611,22 +636,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
@@ -636,6 +645,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
