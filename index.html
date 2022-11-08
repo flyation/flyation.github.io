@@ -152,6 +152,165 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ssh与frp实现mac访问windows" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/08/ssh%E4%B8%8Efrp%E5%AE%9E%E7%8E%B0mac%E8%AE%BF%E9%97%AEwindows/">ssh与frp实现mac访问windows</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/08/ssh%E4%B8%8Efrp%E5%AE%9E%E7%8E%B0mac%E8%AE%BF%E9%97%AEwindows/" class="archive-article-date">
+  	<time datetime="2022-11-08T03:19:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-局域网内通过ssh访问windows"><a href="#1-局域网内通过ssh访问windows" class="headerlink" title="1.局域网内通过ssh访问windows"></a>1.局域网内通过ssh访问windows</h1><h2 id="windows开启ssh服务"><a href="#windows开启ssh服务" class="headerlink" title="windows开启ssh服务"></a>windows开启ssh服务</h2><ol>
+<li><p>在开始菜单中搜索<code>可选功能</code>，进入<strong>设置-应用-可选功能</strong>。在<code>已安装功能</code>中搜索<code>open</code>，查看是否已安装了<code>OpenSSH客户端</code>和<code>OpenSSH服务器</code>，若缺少则在<code>添加可选功能</code>里找到并安装。</p>
+</li>
+<li><p>命令行输入<code>ssh -V</code>，查看是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -V</span><br><span class="line"></span><br><span class="line">OpenSSH_for_Windows_8.1p1, LibreSSL 3.0.2</span><br></pre></td></tr></table></figure></li>
+<li><p>在开始菜单中搜索<code>计算机管理</code>，进入<strong>服务和应用程序-服务</strong>，找到<code>OpenSSH Authentication Agent</code>和<code>OpenSSH SSH Server</code>，将启动类型修改为自动。</p>
+</li>
+<li><p>在<code>PowerShell</code>中输入<code>Get-Service -Name *ssh*</code>，查看到<code>ssh-agent</code>和<code>sshd</code>的状态为<code>Running</code>，说明服务启动成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ Get-Service -Name *ssh*</span><br><span class="line"></span><br><span class="line">Status   Name               DisplayName</span><br><span class="line">------   ----               -----------</span><br><span class="line">Running  ssh-agent          OpenSSH Authentication Agent</span><br><span class="line">Running  sshd               OpenSSH SSH Server</span><br></pre></td></tr></table></figure></li>
+<li><p>查看服务是否在监听<code>22</code>端口。<code>netstat -an | findstr :22</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -an | findstr :22</span><br><span class="line"></span><br><span class="line">TCP    0.0.0.0:22             0.0.0.0:0              LISTENING</span><br><span class="line">TCP    127.0.0.1:22112        0.0.0.0:0              LISTENING</span><br><span class="line">TCP    [::]:22                [::]:0                 LISTENING</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="mac连接windows"><a href="#mac连接windows" class="headerlink" title="mac连接windows"></a>mac连接windows</h2><p>在终端中输入<code>ssh &lt;windows的用户名&gt;@&lt;windows的ip地址&gt;</code></p>
+<p>若windows登录了微软账号，则用户名是微软账号名；若账号名中带有<code>@</code>符号，则应该用双引号包裹，以区分命令中的<code>@</code>符号。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh fly@192.168.0.104</span><br><span class="line">或</span><br><span class="line">$ ssh <span class="string">&quot;123456789@qq.com&quot;</span>@192.168.0.104</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-frp"><a href="#2-frp" class="headerlink" title="2.frp"></a>2.frp</h1><blockquote>
+<p>使用有公网ip的linux服务器作为服务器端，windows作为客户端</p>
+</blockquote>
+<p>到github下载两端的软件<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<h2 id="2-1-服务端配置"><a href="#2-1-服务端配置" class="headerlink" title="2.1 服务端配置"></a>2.1 服务端配置</h2><ol>
+<li><p><code>frps.ini</code>文件：使用默认的最小配置就行，无需修改    </p>
+</li>
+<li><p>将文件夹重命名为<code>frps</code>（为了简便），并上传到服务器中</p>
+</li>
+<li><p>添加文件夹中的<code>frps</code>文件的执行权限<code>chmod +x frps</code></p>
+</li>
+<li><p>启动服务：<code>./frps -c ./frps.ini</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ./frps -c ./frps.ini</span><br><span class="line"></span><br><span class="line">2022/11/08 21:24:17 [I] [root.go:206] frps uses config file: ./frps.ini</span><br><span class="line">2022/11/08 21:24:17 [I] [service.go:196] frps tcp listen on 0.0.0.0:7000</span><br><span class="line">2022/11/08 21:24:17 [I] [root.go:215] frps started successfully</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>云主机的话记得到安全组中放行6000、7000端口！</strong></p>
+<p><strong>云主机的话记得到安全组中放行6000、7000端口！</strong></p>
+<p><strong>云主机的话记得到安全组中放行6000、7000端口！</strong></p>
+<h2 id="2-2-客户端配置"><a href="#2-2-客户端配置" class="headerlink" title="2.2 客户端配置"></a>2.2 客户端配置</h2><ol>
+<li><p><code>frpc.ini</code>文件：修改<code>server_addr</code>的值为<strong>服务端</strong>的公网ip，其他无需修改</p>
+</li>
+<li><p>将文件夹<code>frp_0.45.0_windows_amd64</code>上传到服务器中</p>
+</li>
+<li><p>启动服务：<code>frpc -c frpc.ini</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ frpc -c frpc.ini</span><br><span class="line">2022/11/08 21:34:21 [I] [service.go:357] [7e77e8f2e05c7e16] login to server success, get run <span class="built_in">id</span> [7e77e8f2e05c7e16], server udp port [0]</span><br><span class="line">2022/11/08 21:34:21 [I] [proxy_manager.go:142] [7e77e8f2e05c7e16] proxy added: [ssh]</span><br><span class="line">2022/11/08 21:34:21 [I] [control.go:177] [7e77e8f2e05c7e16] [ssh] start proxy success</span><br></pre></td></tr></table></figure>
+
+<p>同时此时看到frp服务端的控制台显示客户端连接成功的信息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2022/11/08 21:34:20 [I] [service.go:454] [7e77e8f2e05c7e16] client login info: ip [182.138.167.237:30341] version [0.45.0] hostname [] os [windows] <span class="built_in">arch</span> [amd64]</span><br><span class="line">2022/11/08 21:34:20 [I] [tcp.go:64] [7e77e8f2e05c7e16] [ssh] tcp proxy listen port [6000]</span><br><span class="line">2022/11/08 21:34:20 [I] [control.go:464] [7e77e8f2e05c7e16] new proxy [ssh] <span class="built_in">type</span> [tcp] success</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="2-3-mac使用内网穿透连接windwos"><a href="#2-3-mac使用内网穿透连接windwos" class="headerlink" title="2.3 mac使用内网穿透连接windwos"></a>2.3 mac使用内网穿透连接windwos</h2><p>输入命令<code>ssh -p 6000 &lt;windows用户名&gt;@&lt;frp服务器的ip&gt;</code>（6000是frp配置中默认的远程ssh端口）</p>
+<p>若配置了免密登陆则登陆成功，否则需要再输入一次windows密码</p>
+<p>此时看到frp服务端的控制台显示用户ssh连接成功的信息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2022/11/08 21:38:55 [I] [proxy.go:179] [7e77e8f2e05c7e16] [ssh] get a user connection [182.138.167.237:30404]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-配置frp自启动"><a href="#2-4-配置frp自启动" class="headerlink" title="2.4 配置frp自启动"></a>2.4 配置frp自启动</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>进入<code>/lib/systemd/system</code>，添加文件<code>frps.service</code>（注意将ExecStart中的命令的路径修改为自己存放frps的位置）：</p>
+<p><code>vim /lib/systemd/system/frps.service</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Frp Server Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=root</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5s</span><br><span class="line">ExecStart=/usr/local/frps/frps -c /usr/local/frps/frps.ini</span><br><span class="line">LimitNOFILE=1048576</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>，<code>wq</code>保存退出</p>
+<p>重新加载系统服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>设置开机启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl <span class="built_in">enable</span> frps.service</span><br></pre></td></tr></table></figure>
+
+<p>开启服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start frps.service</span><br></pre></td></tr></table></figure>
+
+<p>查看服务状态<code>systemctl status frps.service</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl status frps.service</span><br><span class="line"></span><br><span class="line">● frps.service - Frp Server Service</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/frps.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since 二 2022-11-08 22:03:01 CST; 3s ago</span><br><span class="line"> Main PID: 13047 (frps)</span><br><span class="line">    Tasks: 3</span><br><span class="line">   Memory: 10.8M</span><br><span class="line">   CGroup: /system.slice/frps.service</span><br><span class="line">           └─13047 /usr/local/frps/frps -c /usr/local/frps/frps.ini</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>添加一个脚本文件<code>frpc_autostart.bat</code>（文件名无所谓）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> not defined TAG (</span><br><span class="line">	<span class="built_in">set</span> TAG=1</span><br><span class="line">	start wt -p <span class="string">&quot;cmd&quot;</span> %0</span><br><span class="line">	<span class="built_in">exit</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">:home</span><br><span class="line">frpc -c frpc.ini</span><br><span class="line">goto home</span><br></pre></td></tr></table></figure>
+
+<p>给这个文件创建一个快捷方式</p>
+<p>将快捷方式移动到<code>C:\Users\windows用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>目录下（注意自己的电脑是自己的用户名），</p>
+<p>这样每次windows启动后这个文件都会随之运行</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">frp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">远程连接</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网穿透</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/08/ssh%E4%B8%8Efrp%E5%AE%9E%E7%8E%B0mac%E8%AE%BF%E9%97%AEwindows/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-安装虚拟机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1409,151 +1568,6 @@
 
 
   
-    <article id="post-gRPC的Java端使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/30/gRPC%E7%9A%84Java%E7%AB%AF%E4%BD%BF%E7%94%A8/">gRPC的Java端使用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/30/gRPC%E7%9A%84Java%E7%AB%AF%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-05-30T09:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="gRPC简介"><a href="#gRPC简介" class="headerlink" title="gRPC简介"></a>gRPC简介</h2><blockquote>
-<p>gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment.</p>
-</blockquote>
-<p><code>gRPC</code>是一个现代、开源、高性能的远程调用（RPC） 框架，可以在任何环境中运行</p>
-<p><img src="https://grpc.io/img/landing-2.svg" alt="gRPC"></p>
-<ul>
-<li><p><strong>适合场景</strong></p>
-<p>gRPC非常适合以下场景：</p>
-<ul>
-<li>微服务 - gRPC设计为低延迟和高吞吐量通信。gRPC非常适用于效率至关重要的轻型微服务。</li>
-<li>点对点实时通信 - gRPC对双向流媒体提供出色的支持。gRPC服务可以实时推送消息而无需轮询。</li>
-<li>多语言混合开发环境 - gRPC工具支持所有流行的开发语言，使gRPC成为多语言开发环境的理想选择。</li>
-<li>网络受限环境 - 使用Protobuf（一种轻量级消息格式）序列化gRPC消息。gRPC消息始终小于等效的JSON消息。</li>
-</ul>
-</li>
-<li><p><strong>不建议使用场景</strong></p>
-<p>在以下场景中，建议使用其他框架而不是gRPC：</p>
-<ul>
-<li>浏览器可访问的API - 浏览器不完全支持gRPC。gRPC-Web可以提供浏览器支持，但它有局限性并引入了服务器代理。</li>
-<li>广播实时通信 - gRPC支持通过流媒体进行实时通信，但不存在向已注册连接广播消息的概念。例如，在应该将新聊天消息发送到聊天室中的所有客户端的聊天室场景中，需要每个gRPC呼叫以单独地将新的聊天消息流传输到客户端。对于这种场景，SignalR是这种情况的有用框架。SignalR具有持久连接的概念和对广播消息的内置支持。</li>
-<li>进程间通信 - 进程必须承载HTTP/2服务才能接受传入的gRPC调用。对于Windows，进程间通信管道是一种快速，轻量级的通信方法。</li>
-</ul>
-</li>
-</ul>
-<h2 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h2><blockquote>
-<p>一种轻便、高效的结构化数据存储方式，与语言、平台无关</p>
-</blockquote>
-<ul>
-<li>gRPC框架默认使用的数据交换格式</li>
-<li>文件名以<code>.proto</code>结尾</li>
-<li>字段类型包含常见的数字、字符串、布尔、枚举、数组</li>
-<li>每个字段需要一个数字标识符，定义好后不能改变。最小的标识号可以从1开始，最大到2^29 - 1, or 536,870,911。不可以使用其中的[19000－19999]的标识号， Protobuf协议实现中对这些进行了预留。如果非要在.proto文件中使用这些预留标识号，编译时就会报警</li>
-</ul>
-<p>示例：</p>
-<p><code>person.proto</code></p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message </span><span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="type">int32</span> id = <span class="number">1</span>;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">2</span>;</span><br><span class="line">  <span class="type">bool</span> is_married = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="gRPC的四种通信模式"><a href="#gRPC的四种通信模式" class="headerlink" title="gRPC的四种通信模式"></a>gRPC的四种通信模式</h2><ol>
-<li>unary call 一元通信</li>
-<li>Server-side streaming RPC 服务端流式通信</li>
-<li>Client-side streaming RPC 客户端流式通信</li>
-<li>Bidirectional streaming RPC 双向流式通信</li>
-</ol>
-<h1 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-protobuf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;grpc.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-stub<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;grpc.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-netty<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;grpc.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">extensions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extension</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>kr.motd.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>os-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extension</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.xolstice.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>protobuf-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">protocArtifact</span>&gt;</span></span><br><span class="line">          com.google.protobuf:protoc:3.19.2:exe:$&#123;os.detected.classifier&#125;																		<span class="tag">&lt;/<span class="name">protocArtifact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginId</span>&gt;</span>grpc-java<span class="tag">&lt;/<span class="name">pluginId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginArtifact</span>&gt;</span></span><br><span class="line">          io.grpc:protoc-gen-grpc-java:1.45.1:exe:$&#123;os.detected.classifier&#125;																	<span class="tag">&lt;/<span class="name">pluginArtifact</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile-custom<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="定义gRPC服务"><a href="#定义gRPC服务" class="headerlink" title="定义gRPC服务"></a>定义gRPC服务</h1><h2 id="定义proto文件"><a href="#定义proto文件" class="headerlink" title="定义proto文件"></a>定义proto文件</h2><figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">option</span> java_package = <span class="string">&quot;com.example.demo&quot;</span>;</span><br><span class="line"><span class="keyword">option</span> java_multiple_files = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">service </span><span class="title class_">Greeter</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// unary call</span></span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> SayHello (HelloRequest) <span class="keyword">returns</span> (HelloReply) </span>&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// server stream</span></span><br><span class="line">  <span class="function"><span class="keyword">rpc</span> SayHelloAgain (HelloRequest) <span class="keyword">returns</span> (stream HelloReply) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">HelloRequest</span> &#123;</span><br><span class="line">  <span class="type">string</span> name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">HelloReply</span> &#123;</span><br><span class="line">  <span class="type">string</span> message = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h2><img src="/Users/dongpengfei/Desktop/截屏2022-05-16 14.28.34.png" alt="截屏2022-05-16 14.28.34" style="zoom:50%;" />
-
-
-
-<img src="/Users/dongpengfei/Desktop/截屏2022-05-16 14.25.53.png" alt="截屏2022-05-16 14.25.53" style="zoom:50%;" />
-
-<ul>
-<li><code>compile</code>: 生成proto文件</li>
-<li><code>compile-custom</code>: 生成gRPC文件</li>
-</ul>
-<h1 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h1><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><ul>
-<li><p>自己写一个类，继承<code>GreeterGrpc.GreeterImplBase</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GreeterService</span> <span class="keyword">extends</span> <span class="title class_">GreeterGrpc</span>.GreeterImplBase &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">(HelloRequest request, StreamObserver&lt;HelloReply&gt; responseObserver)</span> &#123;</span><br><span class="line">     	  System.out.println(request.getName());</span><br><span class="line">      	<span class="comment">// 构造返回对象</span></span><br><span class="line">        <span class="type">HelloReply</span> <span class="variable">helloReply</span> <span class="operator">=</span> HelloReply.newBuilder()</span><br><span class="line">                .setMessage(<span class="string">&quot;okok&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">        responseObserver.onNext(helloReply);</span><br><span class="line">      	<span class="comment">// 结束调用</span></span><br><span class="line">        responseObserver.onCompleted();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHelloAgain</span><span class="params">(HelloRequest request, StreamObserver&lt;HelloReply&gt; responseObserver)</span> &#123;</span><br><span class="line">        System.out.println(request.getName());</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="type">HelloReply</span> <span class="variable">helloReply</span> <span class="operator">=</span> HelloReply.newBuilder()</span><br><span class="line">                    .setMessage(<span class="string">&quot;okok&quot;</span> + i)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 多次调用onNext()</span></span><br><span class="line">            responseObserver.onNext(helloReply);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 结束调用</span></span><br><span class="line">        responseObserver.onCompleted();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>启动服务</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">    <span class="type">Server</span> <span class="variable">server</span> <span class="operator">=</span> ServerBuilder.forPort(<span class="number">8527</span>)</span><br><span class="line">            .addService(<span class="keyword">new</span> <span class="title class_">GreeterService</span>())</span><br><span class="line">            .build()</span><br><span class="line">            .start();</span><br><span class="line">    System.out.println(<span class="string">&quot;server started&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;==============&quot;</span>);</span><br><span class="line">    server.awaitTermination();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>使用<code>stub</code>调用进行远程调用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GreeterClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 指定主机和端口</span></span><br><span class="line">        <span class="type">ManagedChannel</span> <span class="variable">channel</span> <span class="operator">=</span> ManagedChannelBuilder.forAddress(<span class="string">&quot;localhost&quot;</span>, <span class="number">8527</span>)</span><br><span class="line">                .usePlaintext()</span><br><span class="line">                .build();</span><br><span class="line">        GreeterGrpc.<span class="type">GreeterBlockingStub</span> <span class="variable">blockingStub</span> <span class="operator">=</span> GreeterGrpc.newBlockingStub(channel);</span><br><span class="line">				</span><br><span class="line">      	<span class="comment">// 构造请求对象</span></span><br><span class="line">        <span class="type">HelloRequest</span> <span class="variable">helloRequest</span> <span class="operator">=</span> HelloRequest.newBuilder()</span><br><span class="line">                .setName(<span class="string">&quot;张三&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">      	<span class="comment">// 远程调用，获取响应 </span></span><br><span class="line">        <span class="type">HelloReply</span> <span class="variable">helloReply</span> <span class="operator">=</span> blockingStub.sayHello(helloRequest);</span><br><span class="line">        System.out.println(helloReply);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gRPC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/30/gRPC%E7%9A%84Java%E7%AB%AF%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1675,10 +1689,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
@@ -1692,6 +1702,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1715,6 +1729,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">frp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">远程连接</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
@@ -1724,14 +1762,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
