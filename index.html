@@ -152,6 +152,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-终端美化之zsh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/10/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E4%B9%8Bzsh/">终端美化之zsh</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/10/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E4%B9%8Bzsh/" class="archive-article-date">
+  	<time datetime="2022-11-10T12:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-安装zsh"><a href="#1-安装zsh" class="headerlink" title="1.安装zsh"></a>1.安装zsh</h1><p>根据自己操作系统发行版本使用对应的包管理器安装zsh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证安装成功，查看版本</span></span><br><span class="line">zsh --version</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>切换shell</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看系统当前的shell，centOS默认为bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换为zsh</span></span><br><span class="line">chsh -s /usr/bin/zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换后重启系统</span></span><br><span class="line"><span class="comment"># 重启后再次查看当前shell，发现已经变为zsh</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-安装Oh-My-Zsh"><a href="#2-安装Oh-My-Zsh" class="headerlink" title="2.安装Oh My Zsh"></a>2.安装Oh My Zsh</h1><blockquote>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+<p>github地址：<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">https://github.com/ohmyzsh/ohmyzsh</a></p>
+</blockquote>
+<p><strong>如果是Mac系统，由于高版本的Mac的默认shell就是zsh，所以建议在安装Oh My Zsh前先备份配置文件<code>~/.zshrc</code></strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果无法连接，可以使用国内镜像源</span></span><br><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/pocmon/ohmyzsh/raw/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-个性化"><a href="#3-个性化" class="headerlink" title="3.个性化"></a>3.个性化</h1><h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>Oh My Zsh自带很多主题，可在官方github的wiki上查看：<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</a></p>
+<p>修改配置文件<code>~/.zshrc</code>中的主题<code>ZSH_THEME</code>。若设为random，则在每次打开终端后都随机切换一个主题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZSH_THEME=&quot;random&quot;</span><br></pre></td></tr></table></figure>
+
+<p>刷新配置文件，令其生效</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h2><h3 id="语法高亮zsh-syntax-highlighting"><a href="#语法高亮zsh-syntax-highlighting" class="headerlink" title="语法高亮zsh-syntax-highlighting"></a>语法高亮<code>zsh-syntax-highlighting</code></h3><blockquote>
+<p> 官方安装手册：<a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md</a></p>
+</blockquote>
+<p>基本可概括为两种安装方式，二选一即可</p>
+<ul>
+<li><p>通过<code>Oh My Zsh</code>的插件管理</p>
+<ul>
+<li><p>将插件下载到<code>Oh My Zsh</code>的插件管理目录中</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure></li>
+<li><p>修改配置文件<code>~/.zshrc</code>中的插件配置<code>plugins</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=( [plugins...] zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure></li>
+<li><p>刷新配置文件，令其生效</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line">- 手动安装</span><br><span class="line"></span><br><span class="line">  - 下载插件到任意目录都可以，再将<span class="built_in">source</span>插件的语句加到配置文件`~/.zshrc`中</span><br><span class="line"></span><br><span class="line">    ```sh</span><br><span class="line">    git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;(q-)PWD&#125;</span>/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>mac在这一步可直接使用<code>brew</code>下载，下载之后也一样的将插件对应的目录追加到配置文件<code>~/.zshrc</code>中</p>
+</li>
+<li><p>刷新配置文件，令其生效</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="自动补全-zsh-autosuggestions"><a href="#自动补全-zsh-autosuggestions" class="headerlink" title="自动补全 zsh-autosuggestions"></a>自动补全 <code>zsh-autosuggestions</code></h3><blockquote>
+<p>官方安装手册：<a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md">https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md</a></p>
+</blockquote>
+<p>方法同上，将插件名替换即可</p>
+<h1 id="卸载Oh-My-Zsh"><a href="#卸载Oh-My-Zsh" class="headerlink" title="卸载Oh My Zsh"></a>卸载Oh My Zsh</h1><p>终端运行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uninstall_oh_my_zsh</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zsh</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/10/%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96%E4%B9%8Bzsh/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ssh与frp实现mac访问windows" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1057,11 +1192,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1458,116 +1593,6 @@
 
 
   
-    <article id="post-Linux指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/">Linux指令</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2022-06-07T08:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><blockquote>
-<p>列出目录</p>
-</blockquote>
-<ul>
-<li><code>-l</code>: 详细信息。简写：<code>ll</code></li>
-<li><code>-a</code>：列出所有节点，包含以<code>.</code>开头的</li>
-<li><code>-h</code>：显示文件大小的单位，利于人（humen）看</li>
-<li><code>-t</code>：按修改时间（time）排序，最新的排在最前</li>
-<li><code>-S</code>：按文件大小（Size）排序，最大的排在最前</li>
-<li><code>-r</code>：颠倒（reverse）排序</li>
-</ul>
-<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><ul>
-<li><code>grep</code><ul>
-<li>直接命令形式：<code>grep ‘123’ test.log</code>在test.log文件中查找包含123的部分</li>
-<li>被动管道符形式：<code>| grep xxx</code>在管道符前面命令执行的结果中查找包含xxx的部分</li>
-<li><code>| grep xxx</code>：筛选处理结果中包含xxx的部分</li>
-<li><code>| grep -v xxx</code>：筛选处理结果中<strong>不</strong>包含xxx的部分</li>
-<li><code>| grep -C 3 xxx</code>：筛选处理结果中包含xxx的前后3行</li>
-<li><code>| grep -A 3 -B 3 xxx</code>：同上(可分别制定前后不同行数)</li>
-<li><code>| grep -3 xxx</code>：同上（简写形式）</li>
-<li><code>| grep -A 3 xxx</code>：筛选处理结果中包含xxx的后3行</li>
-<li><code>| grep -B 3 xxx</code>：筛选处理结果中包含xxx的前3行</li>
-</ul>
-</li>
-<li><code>open xxx</code>：（Mac中）打开文件/文件夹</li>
-</ul>
-<h1 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h1><h2 id="查询pid"><a href="#查询pid" class="headerlink" title="查询pid"></a>查询pid</h2><ul>
-<li><code>ps -ef | grep xxx</code>：查询xxx进程</li>
-<li><code>lsof -i tcp:xxxx</code>：查询xxxx端口</li>
-</ul>
-<h2 id="关闭端口"><a href="#关闭端口" class="headerlink" title="关闭端口"></a>关闭端口</h2><ul>
-<li><code>kill -9 xxxx</code>：强制关闭xxxx端口</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Mac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1669,15 +1694,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1685,11 +1702,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1698,10 +1719,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1745,11 +1762,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1762,6 +1779,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zsh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>

@@ -152,6 +152,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/">Linux指令</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2022-06-07T08:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h1><blockquote>
+<p>列出目录</p>
+</blockquote>
+<ul>
+<li><code>-l</code>: 详细信息。简写：<code>ll</code></li>
+<li><code>-a</code>：列出所有节点，包含以<code>.</code>开头的</li>
+<li><code>-h</code>：显示文件大小的单位，利于人（humen）看</li>
+<li><code>-t</code>：按修改时间（time）排序，最新的排在最前</li>
+<li><code>-S</code>：按文件大小（Size）排序，最大的排在最前</li>
+<li><code>-r</code>：颠倒（reverse）排序</li>
+</ul>
+<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><ul>
+<li><code>grep</code><ul>
+<li>直接命令形式：<code>grep ‘123’ test.log</code>在test.log文件中查找包含123的部分</li>
+<li>被动管道符形式：<code>| grep xxx</code>在管道符前面命令执行的结果中查找包含xxx的部分</li>
+<li><code>| grep xxx</code>：筛选处理结果中包含xxx的部分</li>
+<li><code>| grep -v xxx</code>：筛选处理结果中<strong>不</strong>包含xxx的部分</li>
+<li><code>| grep -C 3 xxx</code>：筛选处理结果中包含xxx的前后3行</li>
+<li><code>| grep -A 3 -B 3 xxx</code>：同上(可分别制定前后不同行数)</li>
+<li><code>| grep -3 xxx</code>：同上（简写形式）</li>
+<li><code>| grep -A 3 xxx</code>：筛选处理结果中包含xxx的后3行</li>
+<li><code>| grep -B 3 xxx</code>：筛选处理结果中包含xxx的前3行</li>
+</ul>
+</li>
+<li><code>open xxx</code>：（Mac中）打开文件/文件夹</li>
+</ul>
+<h1 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h1><h2 id="查询pid"><a href="#查询pid" class="headerlink" title="查询pid"></a>查询pid</h2><ul>
+<li><code>ps -ef | grep xxx</code>：查询xxx进程</li>
+<li><code>lsof -i tcp:xxxx</code>：查询xxxx端口</li>
+</ul>
+<h2 id="关闭端口"><a href="#关闭端口" class="headerlink" title="关闭端口"></a>关闭端口</h2><ul>
+<li><code>kill -9 xxxx</code>：强制关闭xxxx端口</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Mac</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/07/Linux%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-gRPC的Java端使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -844,15 +954,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,11 +962,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -873,10 +979,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -920,11 +1022,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -937,6 +1039,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zsh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
