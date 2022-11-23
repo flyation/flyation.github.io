@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.安装zsh根据自己操作系统发行版本使用对应的包管理器安装zsh 1234yum install zsh# 验证安装成功，查看版本zsh --version      切换shell 12345678# 查看系统当前的shell，centOS默认为bashecho $SHELL# 切换为zshchsh -s &#x2F;usr&#x2F;bin&#x2F;zsh# 切换后重启系统# 重启后再次查看当前shell，发现已经变为">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-10T12:29:56.000Z">
-<meta property="article:modified_time" content="2022-11-10T14:13:21.185Z">
+<meta property="article:modified_time" content="2022-11-23T01:50:14.629Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="终端">
@@ -215,7 +215,13 @@
 <li><p>修改配置文件<code>~/.zshrc</code>中的插件配置<code>plugins</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=( [plugins...] zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure></li>
 <li><p>刷新配置文件，令其生效</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line">- 手动安装</span><br><span class="line"></span><br><span class="line">  - 下载插件到任意目录都可以，再将<span class="built_in">source</span>插件的语句加到配置文件`~/.zshrc`中</span><br><span class="line"></span><br><span class="line">    ```sh</span><br><span class="line">    git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;(q-)PWD&#125;</span>/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>手动安装</p>
+<ul>
+<li><p>下载插件到任意目录都可以，再将source插件的语句加到配置文件<code>~/.zshrc</code>中</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source <span class="variable">$&#123;(q-)PWD&#125;</span>/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh&quot;</span> &gt;&gt; <span class="variable">$&#123;ZDOTDIR:-<span class="variable">$HOME</span>&#125;</span>/.zshrc</span><br></pre></td></tr></table></figure>
 
 <p>mac在这一步可直接使用<code>brew</code>下载，下载之后也一样的将插件对应的目录追加到配置文件<code>~/.zshrc</code>中</p>
 </li>
