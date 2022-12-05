@@ -152,6 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Git指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/08/Git%E6%8C%87%E4%BB%A4/">Git指令</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/08/Git%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2022-06-08T05:55:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>菜鸟教程<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
+</blockquote>
+<h1 id="初次安装后设置"><a href="#初次安装后设置" class="headerlink" title="初次安装后设置"></a>初次安装后设置</h1><p>设置用户名和邮箱</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &lt;your_username&gt;</span><br><span class="line">git config --global user.email &lt;your_email&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><ul>
+<li><code>git init</code>：在当前目录下创建仓库</li>
+<li><code>git init &lt;directory&gt;</code>：在指定目录下创建仓库</li>
+<li><code>git clone &lt;repo&gt; </code>：将远程仓库克隆到当前目录下</li>
+<li><code>git clone &lt;repo&gt; &lt;directory&gt;</code>：将远程仓库克隆到指定目录中</li>
+<li><code>git config --list</code>：查看git配置信息</li>
+<li><code>git config -e</code>：编辑当前仓库的git配置</li>
+<li><code>git config -e --global  </code>：编辑git的全局配置</li>
+</ul>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><ul>
+<li><code>git branch</code>：不带任何参数，列出所有本地分支</li>
+<li><code>git branch &lt;branchName&gt;</code>：以当前分支的最新提交创建新分支</li>
+<li><code>git checkout &lt;branchName&gt;</code>：切换到指定分支</li>
+<li><code>git checkout -b &lt;branchName&gt;</code>：创建新分支并立即切换到该分支</li>
+<li><code>git branch -d &lt;branchName&gt;</code>：删除指定分支（本地）（如果有未提交的文件，则会删除失败）</li>
+<li><code>git branch -D &lt;branchName&gt;</code>：强制删除指定分支（本地）</li>
+<li><code>git merge &lt;branchName&gt;</code>：将指定分支合并到当前分支</li>
+</ul>
+<h1 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h1><ul>
+<li><code>git log</code>：查看历史提交记录</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/08/Git%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -200,10 +300,10 @@
 </ul>
 <h1 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h1><h2 id="查询pid"><a href="#查询pid" class="headerlink" title="查询pid"></a>查询pid</h2><ul>
 <li><code>ps -ef | grep xxx</code>：查询xxx进程</li>
-<li><code>lsof -i tcp:xxxx</code>：查询xxxx端口</li>
+<li><code>lsof -i tcp:xxx</code>：查询xxx端口</li>
 </ul>
 <h2 id="关闭端口"><a href="#关闭端口" class="headerlink" title="关闭端口"></a>关闭端口</h2><ul>
-<li><code>kill -9 xxxx</code>：强制关闭xxxx端口</li>
+<li><code>kill -9 xxx</code>：强制关闭pid为xxx的进程</li>
 </ul>
 
       
@@ -950,19 +1050,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -970,7 +1062,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -982,7 +1086,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1022,14 +1134,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
@@ -1042,6 +1146,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1051,14 +1163,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
