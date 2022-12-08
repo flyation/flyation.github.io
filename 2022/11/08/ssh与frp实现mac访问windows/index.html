@@ -16,10 +16,11 @@
 <meta property="og:description" content="1.局域网内通过ssh访问windowswindows开启ssh服务 在开始菜单中搜索可选功能，进入设置-应用-可选功能。在已安装功能中搜索open，查看是否已安装了OpenSSH客户端和OpenSSH服务器，若缺少则在添加可选功能里找到并安装。  命令行输入ssh -V，查看是否安装成功 123ssh -VOpenSSH_for_Windows_8.1p1, LibreSSL 3.0.2 在开始">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-08T03:19:59.000Z">
-<meta property="article:modified_time" content="2022-11-22T07:16:06.094Z">
+<meta property="article:modified_time" content="2022-12-08T15:09:29.746Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="frp">
+<meta property="article:tag" content="rdp">
 <meta property="article:tag" content="远程连接">
 <meta property="article:tag" content="内网穿透">
 <meta name="twitter:card" content="summary">
@@ -196,12 +197,12 @@
 
 
 
-<h1 id="2-frp"><a href="#2-frp" class="headerlink" title="2.frp"></a>2.frp</h1><blockquote>
+<h1 id="2-frp实现互联网远程访问"><a href="#2-frp实现互联网远程访问" class="headerlink" title="2.frp实现互联网远程访问"></a>2.frp实现互联网远程访问</h1><blockquote>
 <p>使用有公网ip的linux服务器作为服务器端，windows作为客户端</p>
 </blockquote>
 <p>到github下载两端的软件<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
 <h2 id="2-1-服务端配置"><a href="#2-1-服务端配置" class="headerlink" title="2.1 服务端配置"></a>2.1 服务端配置</h2><ol>
-<li><p><code>frps.ini</code>文件：使用默认的最小配置就行，无需修改    </p>
+<li><p><code>frps.ini</code>文件：使用默认的最小配置就行，无需修改    （默认bind_port为7000）</p>
 </li>
 <li><p>将文件夹重命名为<code>frps</code>（为了简便），并上传到服务器中</p>
 </li>
@@ -214,8 +215,8 @@
 <p><strong>云主机的话记得到安全组中放行6000、7000端口！</strong></p>
 <p><strong>云主机的话记得到安全组中放行6000、7000端口！</strong></p>
 <h2 id="2-2-客户端配置"><a href="#2-2-客户端配置" class="headerlink" title="2.2 客户端配置"></a>2.2 客户端配置</h2><ol>
-<li><p><code>frpc.ini</code>文件：修改<code>server_addr</code>的值为<strong>服务端</strong>的公网ip，其他无需修改</p>
-</li>
+<li><p><code>frpc.ini</code>文件：修改<code>server_addr</code>的值为<strong>服务端</strong>的公网ip，其他无需修改。（ssh远程端口为6000）</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = <span class="number">101.34</span>.<span class="number">20.168</span></span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[ssh]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">22</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">6000</span></span><br></pre></td></tr></table></figure></li>
 <li><p>将文件夹<code>frp_0.45.0_windows_amd64</code>上传到服务器中</p>
 </li>
 <li><p>启动服务：<code>frpc -c frpc.ini</code></p>
@@ -252,6 +253,18 @@
 <p>给这个文件创建一个快捷方式</p>
 <p>将快捷方式移动到<code>C:\Users\windows用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>目录下（注意自己的电脑是自己的用户名），</p>
 <p>这样每次windows启动后这个文件都会随之运行</p>
+<h1 id="3-图形化界面访问"><a href="#3-图形化界面访问" class="headerlink" title="3.图形化界面访问"></a>3.图形化界面访问</h1><p>使用软件<code>Microsoft Remote Desktop for Mac</code>进行远程桌面连接</p>
+<p>国区AppStore没有上架，要用外服账户下载</p>
+<h2 id="3-1-windows开启远程桌面访问"><a href="#3-1-windows开启远程桌面访问" class="headerlink" title="3.1 windows开启远程桌面访问"></a>3.1 windows开启远程桌面访问</h2><p>进入：控制面板 - 系统和安全 - 系统 - 允许远程访问 </p>
+<p>勾选<code>允许远程连接到此计算机</code></p>
+<h2 id="3-2-修改frpc-ini"><a href="#3-2-修改frpc-ini" class="headerlink" title="3.2 修改frpc.ini"></a>3.2 修改frpc.ini</h2><p>追加rdp相关配置。（配置rdp远程端口为6001，<em>windows远程桌面访问默认端口为3389</em>）</p>
+<p><strong>云服务器记得要放开相关端口</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = <span class="number">101.34</span>.<span class="number">20.168</span></span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[ssh]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">22</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">6000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[rdp]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">3389</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">6001</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>重启frpc服务。</p>
+<h2 id="3-3-运行Microsoft-Remote-Desktop"><a href="#3-3-运行Microsoft-Remote-Desktop" class="headerlink" title="3.3 运行Microsoft Remote Desktop"></a>3.3 运行Microsoft Remote Desktop</h2><p>打开软件后点击<code>Add PC</code>添加连接，<code>PC name </code>为frps所在服务器的ip + 配置的rdp远程端口，如<code>101.1.2.3:6001</code>。</p>
+<p>确定即可通过互联网进行windows远程桌面连接</p>
+<p>tip：在<code>display</code>中勾选<code>Optimize for Retina displays</code>优化显示效果</p>
 
       
 
@@ -291,6 +304,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">frp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rdp</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -513,11 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,43 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">frp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">远程连接</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,15 +566,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">命名</a>
+                <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">变量</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">常量</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">frp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rdp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">远程连接</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网穿透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +606,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">命名</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+                <a href="javascript:void(0)" class="js-tag color3">变量</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">常量</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,6 +627,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
             
             <div class="clearfix"></div>
