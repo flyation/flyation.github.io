@@ -6,21 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>支付对接 | Hexo</title>
+  <title>在Spring中实现策略模式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="支付安全对称加密加密密钥与解密密钥相同  优点：运算速度快 缺点：密钥需要交换信息的双方共享，一旦被窃取，消息会被解密  AES算法：密钥长度128、256或512。安全强度高，性能很好（目前最流行的） 加密分组模式：将明文分组加密，微信支付中使用AEAD_AES_256_GCM 非对称加密密钥分为公钥与私钥，公钥可以公开，私钥需要自己保密 使用公钥加密后只能用私钥解密，反之亦然  优点：私钥严格">
+  <meta name="description" content="在项目中如果遇到业务需要针对不同情况做不同处理的场景，最简单的办法就是在一个方法中使用多个if-else分支进行判断。 但如果分支情况多了之后，后期代码维护将会变得比较困难。 使用策略模式可以优化这个问题。 场景有一个游戏类，玩不同的游戏时有不同的效果。 12345@Datapublic class Game &amp;#123;    private String name; &#x2F;&#x2F; 游戏名    pri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="支付对接">
-<meta property="og:url" content="http://example.com/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/index.html">
+<meta property="og:title" content="在Spring中实现策略模式">
+<meta property="og:url" content="http://example.com/2023/02/11/%E5%9C%A8Spring%E4%B8%AD%E5%AE%9E%E7%8E%B0%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="支付安全对称加密加密密钥与解密密钥相同  优点：运算速度快 缺点：密钥需要交换信息的双方共享，一旦被窃取，消息会被解密  AES算法：密钥长度128、256或512。安全强度高，性能很好（目前最流行的） 加密分组模式：将明文分组加密，微信支付中使用AEAD_AES_256_GCM 非对称加密密钥分为公钥与私钥，公钥可以公开，私钥需要自己保密 使用公钥加密后只能用私钥解密，反之亦然  优点：私钥严格">
+<meta property="og:description" content="在项目中如果遇到业务需要针对不同情况做不同处理的场景，最简单的办法就是在一个方法中使用多个if-else分支进行判断。 但如果分支情况多了之后，后期代码维护将会变得比较困难。 使用策略模式可以优化这个问题。 场景有一个游戏类，玩不同的游戏时有不同的效果。 12345@Datapublic class Game &amp;#123;    private String name; &#x2F;&#x2F; 游戏名    pri">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-20T16:18:10.000Z">
-<meta property="article:modified_time" content="2022-06-20T16:19:31.726Z">
+<meta property="article:published_time" content="2023-02-11T08:54:20.000Z">
+<meta property="article:modified_time" content="2023-02-11T09:48:33.497Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="支付">
-<meta property="article:tag" content="密码">
-<meta property="article:tag" content="安全">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="策略模式">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -157,56 +156,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-支付对接" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-在Spring中实现策略模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      支付对接
+      在Spring中实现策略模式
     </h1>
   
 
         
-        <a href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2022-06-20T16:18:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-21</time>
+        <a href="/2023/02/11/%E5%9C%A8Spring%E4%B8%AD%E5%AE%9E%E7%8E%B0%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-02-11T08:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="支付安全"><a href="#支付安全" class="headerlink" title="支付安全"></a>支付安全</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>加密密钥与解密密钥相同</p>
-<ul>
-<li>优点：运算速度快</li>
-<li>缺点：密钥需要交换信息的双方共享，一旦被窃取，消息会被解密</li>
+        <p>在项目中如果遇到业务需要针对不同情况做不同处理的场景，最简单的办法就是在一个方法中使用多个if-else分支进行判断。</p>
+<p>但如果分支情况多了之后，后期代码维护将会变得比较困难。</p>
+<p>使用策略模式可以优化这个问题。</p>
+<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>有一个游戏类，玩不同的游戏时有不同的效果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Game</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name; <span class="comment">// 游戏名</span></span><br><span class="line">    <span class="keyword">private</span> Integer type; <span class="comment">//游戏类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PlayGameOld</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 构造一个游戏类</span></span><br><span class="line">        <span class="type">Game</span> <span class="variable">game</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Game</span>();</span><br><span class="line">        game.setName(<span class="string">&quot;守望先锋&quot;</span>);</span><br><span class="line">        game.setType(<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 业务判断</span></span><br><span class="line">        <span class="keyword">if</span> (game.getType() == <span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(game.getName() + <span class="string">&quot;：我收到了召唤，我必须回应&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (game.getType() == <span class="number">3</span>) &#123;</span><br><span class="line">            System.out.println(game.getName() + <span class="string">&quot;：面对疾风吧&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用多个if-else分支进行判断，当然可以满足业务需求。但当后期增加新游戏时，需要硬编码修改这段代码添加新的分支，后期维护会越来越困难。</p>
+<h1 id="使用策略模式-工厂模式改进"><a href="#使用策略模式-工厂模式改进" class="headerlink" title="使用策略模式+工厂模式改进"></a>使用策略模式+工厂模式改进</h1><blockquote>
+<p>本质上多个if-else分支的处理方式是<strong>面向过程</strong>，策略模式的处理方式则是<strong>面向对象</strong></p>
+</blockquote>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>首先创建一个顶层的策略模式，里面有两个方法，<code>isSupport</code>方法用于判断实现类是否支持处理，<code>play</code>则是实际的业务逻辑方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IGameStrategy</span> &#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isSupport</span><span class="params">(Game game)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">play</span><span class="params">(Game game)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着创建两个不同的实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 守望先锋策略类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OWStrategy</span> <span class="keyword">implements</span> <span class="title class_">IGameStrategy</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSupport</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> game.getType() == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">play</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        System.out.println(game.getName() + <span class="string">&quot;：我收到了召唤，我必须回应&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 英雄联盟策略类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoLStrategy</span> <span class="keyword">implements</span> <span class="title class_">IGameStrategy</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSupport</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> game.getType() == <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">play</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        System.out.println(game.getName() + <span class="string">&quot;：面对疾风吧&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来创建一个工厂类（该工厂类是一个单例，由于重点不是这个工厂类，所以并没有严格实现double-check，不重要）。</p>
+<p>这个工厂类根据传入的<code>Game</code>对象，内部进行判断，返回一个对应的策略实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFactory</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MyFactory myFactory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;IGameStrategy&gt; gameStrategyList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">MyFactory</span><span class="params">()</span> &#123;</span><br><span class="line">      	<span class="comment">// 初始化所有策略实现类</span></span><br><span class="line">        gameStrategyList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        gameStrategyList.add(<span class="keyword">new</span> <span class="title class_">OWStrategy</span>());</span><br><span class="line">        gameStrategyList.add(<span class="keyword">new</span> <span class="title class_">LoLStrategy</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MyFactory <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (myFactory == <span class="literal">null</span>) &#123;</span><br><span class="line">            myFactory = <span class="keyword">new</span> <span class="title class_">MyFactory</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> myFactory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">/**</span></span><br><span class="line"><span class="comment"> 		* 根据条件返回对应的策略实现类</span></span><br><span class="line"><span class="comment"> 		*/</span></span><br><span class="line">    <span class="keyword">public</span> IGameStrategy <span class="title function_">getGameStrategy</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        Optional&lt;IGameStrategy&gt; optional = gameStrategyList.stream()</span><br><span class="line">                .filter(gameStrategy -&gt; gameStrategy.isSupport(game))</span><br><span class="line">                .findFirst();</span><br><span class="line">        <span class="type">IGameStrategy</span> <span class="variable">gameStrategy</span> <span class="operator">=</span> optional.orElseThrow(() -&gt; <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;找不到游戏！&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> gameStrategy;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Game</span> <span class="variable">game</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Game</span>();</span><br><span class="line">    game.setName(<span class="string">&quot;守望先锋&quot;</span>);</span><br><span class="line">    game.setType(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">IGameStrategy</span> <span class="variable">gameStrategy</span> <span class="operator">=</span> MyFactory.getInstance().getGameStrategy(game);</span><br><span class="line">    gameStrategy.play(game);</span><br><span class="line">    <span class="comment">// 守望先锋：我收到了召唤，我必须回应</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<li>优点<ul>
+<li>代码改动小：以后新增游戏时，无需修改<strong>获取策略类</strong>的代码，因为工厂类内部会自己判断返回哪个策略类</li>
+<li>代码层次结构更清晰、利于代码维护。</li>
 </ul>
-<p><code>AES</code>算法：密钥长度128、256或512。安全强度高，性能很好（目前最流行的）</p>
-<p>加密分组模式：将明文分组加密，微信支付中使用<code>AEAD_AES_256_GCM</code></p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>密钥分为公钥与私钥，公钥可以公开，私钥需要自己保密</p>
-<p>使用公钥加密后只能用私钥解密，反之亦然</p>
-<ul>
-<li>优点：私钥严格保密，公钥任意分发，黑客获取公钥无法破解密文</li>
-<li>缺点：运算速度慢</li>
+</li>
+<li>缺点<ul>
+<li>不符合开闭原则：以后新增游戏时，仍需在工厂类<strong>初始化策略类</strong>时新增新的游戏策略类（尽管只需一行改动）</li>
+<li>文件数量增加：原来代码逻辑只写在一个文件中，现在每多一个策略就需要多一个代码文件</li>
 </ul>
-<p><code>RSA</code>算法：最著名的非对称加密算法</p>
-<ul>
-<li>公钥加密，私钥解密：保证消息私密性</li>
-<li>私钥加密，公钥解密：身份认证</li>
+</li>
 </ul>
-<h2 id="摘要算法"><a href="#摘要算法" class="headerlink" title="摘要算法"></a>摘要算法</h2><p>用于保证消息的完整性</p>
+<h1 id="黑科技：借助Spring进行改进"><a href="#黑科技：借助Spring进行改进" class="headerlink" title="黑科技：借助Spring进行改进"></a>黑科技：借助Spring进行改进</h1><p>上面的方式存在一个瑕疵：新增游戏时，仍需在工厂类<strong>初始化策略类</strong>时硬编码增加新的游戏策略类。</p>
+<p>而借助Spring，我们可以将所有策略类注册到Spring容器中，从而使得获取bean更加优雅</p>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2><p><code>Game</code>和策略接口<code>IGameStrategy</code>无需改动</p>
+<p>两个策略实现类<code>OWStrategy</code>、<code>LoLStrategy</code>都加上注解<code>@Service</code>注册到容器中</p>
+<p>修改工厂类：</p>
 <ul>
-<li>不可逆：只要算法，没要密钥。只能加密，不能解密</li>
-<li>难题友好性：想要破解，只能暴力枚举</li>
-<li>发散性：只要原文进行一点点改动，摘要就会发生剧烈变化</li>
-<li>抗碰撞性：原文不同，计算后的摘要也不同</li>
+<li>使用Spring的<strong>构造器注入</strong>，可以优雅的获得所有策略实现类。</li>
+<li>将工厂类也注册进容器中：<code>@Component</code></li>
 </ul>
-<p>常见摘要算法：<code>MD5</code>，<code>SHA1</code>，<code>SHA2（SHA224、SHA256、SHA384）</code></p>
-<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>发送方：将消息的明文使用摘要算法计算出摘要，再通过私钥对摘要加密，将摘要的密文与消息的明文一起发送</p>
-<p>接收发：使用公钥解密出摘要的明文，再与自己收到的消息明文计算的摘要进行对比。</p>
-<h2 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h2><p>由受信任的<code>CA</code>颁布，以确保发布的公钥的是真实未被篡改的</p>
-<p>典型场景：<code>HTTPS</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GameStrategyFactory</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;IGameStrategy&gt; gameStrategyList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> IGameStrategy <span class="title function_">getGameStrategy</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        Optional&lt;IGameStrategy&gt; optional = gameStrategyList.stream()</span><br><span class="line">                .filter(gameStrategy -&gt; gameStrategy.isSupport(game))</span><br><span class="line">                .findFirst();</span><br><span class="line">        <span class="type">IGameStrategy</span> <span class="variable">gameStrategy</span> <span class="operator">=</span> optional.orElseThrow(() -&gt; <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;找不到游戏！&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> gameStrategy;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h2><p>使用Spring Test</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GameStrategyFactoryTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GameStrategyFactory gameStrategyFactory;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Game</span> <span class="variable">game</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Game</span>();</span><br><span class="line">        game.setName(<span class="string">&quot;守望先锋2&quot;</span>);</span><br><span class="line">        game.setType(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">IGameStrategy</span> <span class="variable">gameStrategy</span> <span class="operator">=</span> gameStrategyFactory.getGameStrategy(game);</span><br><span class="line">        gameStrategy.play(game);</span><br><span class="line">        <span class="comment">// 英雄联盟：面对疾风吧</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于工厂类也注册进了容器，我们直接通过容器获取工厂类，代码调用更简洁。</p>
+<p>如果后面增加了新的游戏策略，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 守望先锋2策略类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OW2Strategy</span> <span class="keyword">implements</span> <span class="title class_">IGameStrategy</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSupport</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> game.getType() == <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">play</span><span class="params">(Game game)</span> &#123;</span><br><span class="line">        System.out.println(game.getName() + <span class="string">&quot;：依托答辩！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们甚至不需要修改原来的任何代码，工厂类会通过容器自动找到这个新的策略实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GameStrategyFactoryTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GameStrategyFactory gameStrategyFactory;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Game</span> <span class="variable">game</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Game</span>();</span><br><span class="line">        game.setName(<span class="string">&quot;守望先锋2&quot;</span>);</span><br><span class="line">        game.setType(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">IGameStrategy</span> <span class="variable">gameStrategy</span> <span class="operator">=</span> gameStrategyFactory.getGameStrategy(game);</span><br><span class="line">        gameStrategy.play(game);</span><br><span class="line">        <span class="comment">// 守望先锋2：依托答辩！</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优雅！</p>
 
       
 
@@ -241,15 +270,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">支付</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">策略模式</a>
         		</li>
       		
 		</ul>
@@ -305,7 +330,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/11/%E5%9C%A8Spring%E4%B8%AD%E5%AE%9E%E7%8E%B0%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,18 +344,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/06/22/Nginx/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Nginx
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/06/20/Spring%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Spring常用的类</div>
+    <a href="/2022/12/05/npm%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">npm配置</div>
       <i class="icon-circle-right"></i>
     </a>
   
