@@ -717,13 +717,16 @@
 <li><code>yw</code>：复制一个单词（yank word）</li>
 </ul>
 <h2 id="搜索、替换"><a href="#搜索、替换" class="headerlink" title="搜索、替换"></a>搜索、替换</h2><ul>
-<li><p><code>/</code> + <code>搜索内容</code>：搜索指定内容</p>
-<ul>
+<li><code>/</code> + <code>搜索内容</code>：搜索指定内容<ul>
 <li>有多个结果时，<code>n</code>下一个，<code>N</code>上一个</li>
 </ul>
 </li>
-<li><p><code>:%s</code> + <code>/旧内容</code> + <code>/新内容</code> + <code>/g</code>：全局替换指定内容（global）</p>
-</li>
+<li><code>:%s</code> + <code>/旧内容</code> + <code>/新内容</code> + <code>/g</code>：全局替换指定内容（global）</li>
+</ul>
+<h2 id="行缩进"><a href="#行缩进" class="headerlink" title="行缩进"></a>行缩进</h2><p>在普通模式下：</p>
+<ul>
+<li>命令<code>&gt;&gt;</code>将对当前行增加缩进</li>
+<li>命令<code>&lt;&lt;</code>则将对当前行减少缩进</li>
 </ul>
 <h1 id="配置vim显示行号和语法高亮"><a href="#配置vim显示行号和语法高亮" class="headerlink" title="配置vim显示行号和语法高亮"></a>配置vim显示行号和语法高亮</h1><blockquote>
 <p>特别好</p>
@@ -734,7 +737,7 @@
 <li><p>编辑<code>.vimrc</code>，首次创建前是没有这个文件的，没关系</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure></li>
 <li><p>添加内容：显示行号和语法高亮</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set number</span><br><span class="line">syntax on</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot;语法高亮&quot;</span><br><span class="line">syntax on</span><br><span class="line"></span><br><span class="line">&quot;显示行号&quot;</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">&quot;搜索词高亮&quot;</span><br><span class="line">set hls</span><br><span class="line"> </span><br><span class="line">&quot;实时搜索&quot; </span><br><span class="line">set incsearch</span><br><span class="line"></span><br><span class="line">&quot;tab键缩进为2格&quot;</span><br><span class="line">set tabstop=2</span><br><span class="line"> </span><br><span class="line">&quot;行缩进为2格&quot;</span><br><span class="line">set shiftwidth=2</span><br></pre></td></tr></table></figure></li>
 <li><p>保存后生效</p>
 </li>
 </ol>
@@ -1196,10 +1199,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
@@ -1212,15 +1211,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1232,7 +1231,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1264,10 +1271,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">命名</a>
               </li>
              
@@ -1284,15 +1287,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">支付</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">终端</a>
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zsh</a>
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,15 +1307,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">支付</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">zsh</a>
               </li>
             
             <div class="clearfix"></div>
