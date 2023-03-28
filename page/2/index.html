@@ -152,6 +152,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-支付对接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/">支付对接</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2022-06-20T16:18:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="支付安全"><a href="#支付安全" class="headerlink" title="支付安全"></a>支付安全</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>加密密钥与解密密钥相同</p>
+<ul>
+<li>优点：运算速度快</li>
+<li>缺点：密钥需要交换信息的双方共享，一旦被窃取，消息会被解密</li>
+</ul>
+<p><code>AES</code>算法：密钥长度128、256或512。安全强度高，性能很好（目前最流行的）</p>
+<p>加密分组模式：将明文分组加密，微信支付中使用<code>AEAD_AES_256_GCM</code></p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>密钥分为公钥与私钥，公钥可以公开，私钥需要自己保密</p>
+<p>使用公钥加密后只能用私钥解密，反之亦然</p>
+<ul>
+<li>优点：私钥严格保密，公钥任意分发，黑客获取公钥无法破解密文</li>
+<li>缺点：运算速度慢</li>
+</ul>
+<p><code>RSA</code>算法：最著名的非对称加密算法</p>
+<ul>
+<li>公钥加密，私钥解密：保证消息私密性</li>
+<li>私钥加密，公钥解密：身份认证</li>
+</ul>
+<h2 id="摘要算法"><a href="#摘要算法" class="headerlink" title="摘要算法"></a>摘要算法</h2><p>用于保证消息的完整性</p>
+<ul>
+<li>不可逆：只要算法，没要密钥。只能加密，不能解密</li>
+<li>难题友好性：想要破解，只能暴力枚举</li>
+<li>发散性：只要原文进行一点点改动，摘要就会发生剧烈变化</li>
+<li>抗碰撞性：原文不同，计算后的摘要也不同</li>
+</ul>
+<p>常见摘要算法：<code>MD5</code>，<code>SHA1</code>，<code>SHA2（SHA224、SHA256、SHA384）</code></p>
+<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>发送方：将消息的明文使用摘要算法计算出摘要，再通过私钥对摘要加密，将摘要的密文与消息的明文一起发送</p>
+<p>接收发：使用公钥解密出摘要的明文，再与自己收到的消息明文计算的摘要进行对比。</p>
+<h2 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h2><p>由受信任的<code>CA</code>颁布，以确保发布的公钥的是真实未被篡改的</p>
+<p>典型场景：<code>HTTPS</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">支付</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Spring常用的类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1199,11 +1310,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1223,6 +1338,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">gRPC</a>
               </li>
              
@@ -1231,15 +1354,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,14 +1418,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1316,6 +1427,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GoF23</a>
               </li>
             
             <div class="clearfix"></div>
