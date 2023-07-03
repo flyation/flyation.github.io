@@ -6,21 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Nginx | Hexo</title>
+  <title>Tag: CI/CD | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文所用系统：CentOS 7.5 64位  通过源码编译安装 下载nginx-1.22.0，这里我放到&#x2F;opt目录下  解压缩  安装依赖库 123456789101112131415#安装C编译器（功能：预处理、编译、链接、汇编）yum install -y gcc#安装pcre库（功能：解析正则表达式）yum install -y pcre pcre-devel#安装zlib（功能：用于对">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Nginx">
-<meta property="og:url" content="http://example.com/2022/06/22/Nginx/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/tags/CI-CD/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本文所用系统：CentOS 7.5 64位  通过源码编译安装 下载nginx-1.22.0，这里我放到&#x2F;opt目录下  解压缩  安装依赖库 123456789101112131415#安装C编译器（功能：预处理、编译、链接、汇编）yum install -y gcc#安装pcre库（功能：解析正则表达式）yum install -y pcre pcre-devel#安装zlib（功能：用于对">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-22T15:46:18.000Z">
-<meta property="article:modified_time" content="2022-10-08T02:15:18.031Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Nginx">
-<meta property="article:tag" content="CentOS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -157,267 +150,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Nginx" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Nginx
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/07/03/jenkins%E5%B0%9A%E7%A1%85%E8%B0%B7%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2023-07-03T14:33:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/07/03/jenkins%E5%B0%9A%E7%A1%85%E8%B0%B7%E7%AC%94%E8%AE%B0/">jenkins尚硅谷笔记</a>
     </h1>
   
 
-        
-        <a href="/2022/06/22/Nginx/" class="archive-article-date">
-  	<time datetime="2022-06-22T15:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>本文所用系统：CentOS 7.5 64位</p>
-</blockquote>
-<h1 id="通过源码编译安装"><a href="#通过源码编译安装" class="headerlink" title="通过源码编译安装"></a>通过源码编译安装</h1><ol>
-<li><p>下载<code>nginx-1.22.0</code>，这里我放到<code>/opt</code>目录下</p>
-</li>
-<li><p>解压缩</p>
-</li>
-<li><p>安装依赖库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装C编译器（功能：预处理、编译、链接、汇编）</span></span><br><span class="line">yum install -y gcc</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装pcre库（功能：解析正则表达式）</span></span><br><span class="line">yum install -y pcre pcre-devel</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装zlib（功能：用于对数据进行压缩）</span></span><br><span class="line">yum install -y zlib zlib-devel</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装openssl（功能：网络加密通信）</span></span><br><span class="line">yum install -y openssl openssl-devel</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可用一条指令代替上面👆的</span></span><br><span class="line">yum install -y gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel</span><br></pre></td></tr></table></figure></li>
-<li><p>安装</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用prefix选项指定安装的目录，使用with-http_ssl_module添加https模块</span></span><br><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">make install</span><br></pre></td></tr></table></figure></li>
-<li><p>启动</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入nginx的sbin目录</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/nginx/sbin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">./nginx </span><br></pre></td></tr></table></figure></li>
-<li><p>放行端口。分下面两种情况</p>
-<ul>
-<li><p>若为本地虚拟机，则手动关闭防火墙</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="comment"># 禁止防火墙开机启动</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure></li>
-<li><p>若为云服务器（阿里云、腾讯云…），则配置安全组策略</p>
-</li>
-</ul>
-</li>
-</ol>
-<p><em>nginx命令：</em></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速停止</span></span><br><span class="line">./nginx -s stop</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 完成已接受的请求后，停止</span></span><br><span class="line">./nginx -s quit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新加载配置</span></span><br><span class="line">./nginx -s reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查nginx配置是否正确</span></span><br><span class="line">./nginx -t</span><br></pre></td></tr></table></figure>
-
-<h1 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h1><blockquote>
-<p>通过系统服务的方式启动nginx</p>
-</blockquote>
-<ol>
-<li>创建服务脚本</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>服务脚本内容</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit] </span><br><span class="line">Description=nginx</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/usr/local/nginx/logs/nginx.pid</span><br><span class="line">ExecStartPre=/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line">ExecQuit=/usr/local/nginx/sbin/nginx -s quit </span><br><span class="line">PrivateTmp=true</span><br><span class="line">   </span><br><span class="line">[Install]   </span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>重新加载系统服务</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>设置开机启动</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> nginx.service</span><br></pre></td></tr></table></figure>
-
-<p><em>系统服务命令：</em></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看nginx状态</span></span><br><span class="line">systemctl status nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动nginx</span></span><br><span class="line">systemctl start nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止nginx</span></span><br><span class="line">systemctl stop nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启nginx</span></span><br><span class="line">systemctl restart nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重载nginx配置文件</span></span><br><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
-
-<h1 id="增加https模块"><a href="#增加https模块" class="headerlink" title="增加https模块"></a>增加<code>https</code>模块</h1><p>若安装nginx时没有安装<code>http_ssl_module</code>模块，通过以下方式增加</p>
-<p><strong>记得先关闭运行的nginx！！！</strong></p>
-<ol>
-<li>进入nginx源码包目录</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/nginx-1.22.0</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>查看<code>configure arguments</code>参数</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>追加https模块的参数</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>执行<code>make</code>（不能是<code>make install</code>，否则会覆盖安装）</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>当前目录下会生出一个<code>objs</code>文件夹，将里面的<code>nginx</code>文件复制覆盖到<code>/usr/local/nginx/sbin</code>中</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> ./objs/nginx /usr/local/nginx/sbin/</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>重启nginx，通过命令查看发现已经增加了https模块</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V　</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CentOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CI/CD</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/22/Nginx/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          设计模式
-        
-      </div>
-    </a>
   
   
-    <a href="/2022/06/21/%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">支付对接</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -440,9 +230,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
